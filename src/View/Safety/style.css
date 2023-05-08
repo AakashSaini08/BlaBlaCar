@@ -1,0 +1,39 @@
+.scam-img{
+    width: 480px;
+    height: 330px;
+}
+.safety-outer{
+    height: 350px;
+    display: flex;
+    justify-content:space-around;
+    background-color: rgb(0, 175, 245);
+    color: white;
+    font-size: 16px;
+}
+.safety-outer h2{
+    font-size: 30px;
+}
+.safety-right{
+    width: 500px;
+    margin-right: 200px;
+    text-align: left;
+    margin-top: 60px;
+    font-weight: 500;
+
+}
+.safety-left{
+    width: 500px;
+    margin-left: 160px;
+    margin-top: 30px;
+    
+}
+.learn-btn{
+    padding: 15px;
+    border: none;
+    background-color: white;
+    color: rgb(0, 175, 245);
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left:45%;
+}

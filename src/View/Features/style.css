@@ -1,0 +1,24 @@
+.main-feature {
+    width: auto;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #6F8B90;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .feature1,
+  .feature2,
+  .feature3,
+  .feature4 {
+    width: 274px;
+    height: 228px;
+    padding: 0px;
+  }
+  .main-feature h3 {
+    color: #054652;
+  }
