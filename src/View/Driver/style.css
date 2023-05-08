@@ -1,0 +1,39 @@
+.driver-img{
+    width: 480px;
+    height: 330px;
+}
+.driver-outer{
+    height: 350px;
+    display: flex;
+    justify-content:space-around;
+    background-color: white;
+    color: #6F8B90;
+    font-size: 16px;
+}
+.driver-outer h2{
+    font-size: 30px;
+    color: #054652;
+}
+.driver-right{
+    width: 500px;
+    margin-right: 200px;
+    text-align: left;
+    margin-top: 40px;
+    font-weight: 500;
+
+}
+.driver-left{
+    width: 500px;
+    margin-left: 160px;
+    margin-top: 100px;
+}
+.offer-btn{
+    padding: 15px;
+    border: none;
+    color: white;
+    background-color: rgb(0, 175, 245);
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left:45%;
+}

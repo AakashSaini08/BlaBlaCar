@@ -5,6 +5,7 @@ import "./styles.css"
 import SelectTrip from '../../Components/Molecules/SelectTrip'
 import Features from '../Features'
 import Safety from '../Safety'
+import Driver from '../Driver'
 export default function Home() {
   
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           </div>
           <Features/>
           <Safety/>
+          <Driver/>
         </div>
       </div>
       <img className="homeBackgroundImg" src={Images.homeBackground} alt=""></img>

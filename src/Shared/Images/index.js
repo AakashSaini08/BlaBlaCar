@@ -11,6 +11,8 @@ import additionIcon from "../../assets/addition.svg"
 import closeEye from "../../assets/closeEye.png"
 import openEye from "../../assets/openEye.png"
 import scamAlert from "../../assets/scamDetective-653544b71d88f51797db..svg"
+import driver from "../../assets/driver.svg"
+
 export  const Images={
     rightArrow,
     blablacarLogo,
@@ -24,6 +26,7 @@ export  const Images={
     additionIcon,
     openEye,
     closeEye,
-    scamAlert
+    scamAlert,
+    driver,
 }
 
