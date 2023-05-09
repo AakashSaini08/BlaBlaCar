@@ -7,7 +7,7 @@ export default function Login() {
     <div className="section-content">
       <Header heading={"log in"}></Header>
       <div className="email-div">
-        <Link className="email-login" to="/login">
+        <Link className="email-login" to="/emailpsw">
           Continue with email{" "}
         </Link>
       </div>
@@ -16,7 +16,7 @@ export default function Login() {
         <p className="loginRedirect">
           {" "}
           Not a member yet?{" "}
-          <Link className="loginLink" to={"/register"}>
+          <Link className="loginLink" to={"/signup"}>
             Sign up
           </Link>{" "}
         </p>

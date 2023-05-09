@@ -1,0 +1,43 @@
+.password-outer{
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+h2{
+    font-size: 40px;
+    color: #054652;
+}
+.password-input{
+    width: 600px;
+    height: 45px;
+    border: none;
+    font-size: 18px;
+    background-color: rgb(232, 232, 232);
+
+    border-radius:15px ;
+    padding: 10px;
+}
+.password-input:hover{
+    width: 600px;
+    height: 45px;
+    border: 3px solid #00AFF5;
+    font-size: 18px;
+    background-color: rgb(232, 232, 232);
+    border-radius:15px ;
+    padding: 10px;
+}
+p{
+    color: #6F8B90;
+    font-size: 15px;
+}
+.cnt-btn{
+    color: white;
+    background-color: #00AFF5;
+    font-size: 16px;
+    font-weight: 600;
+    width: 130px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+}

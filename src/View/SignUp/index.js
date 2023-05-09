@@ -7,7 +7,7 @@ function SignUp() {
     <div className="section-content">
       <Header heading={"sign up"}></Header>
       <div className="email-div">
-        <Link className="email-login" to="/login">
+        <Link className="email-login" to="/email">
           Continue with email{" "}
         </Link>
       </div>
@@ -16,7 +16,7 @@ function SignUp() {
         <p className="loginRedirect">
           {" "}
           Already a member?{" "}
-          <Link className="loginLink" to={"/register"}>
+          <Link className="loginLink" to={"/login"}>
             Log in
           </Link>{" "}
         </p>
