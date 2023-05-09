@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export default function SelectTrip() {
     const navigate=useNavigate()
     return (
-        <div className="selectTripDiv" >
+        <div className="selectTripDiv " >
             <form className="selectTripForm" >
                 <div className="selectTripDataInputDiv" >
                     <label className="selectTripDataLabel">

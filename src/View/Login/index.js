@@ -1,19 +1,26 @@
-import React from 'react'
-import Header from '../../Components/Atoms/Header'
-import { Link } from 'react-router-dom'
-import rightArrow from "../../assets/rightArrow.svg"
-import CustomLinkListCreator from '../../Components/Atoms/CustomLinkListCreator'
+import React from "react";
+import Header from "../../Components/Atoms/Header";
+import "./style.css";
+import { Link } from "react-router-dom";
 export default function Login() {
   return (
     <div className="section-content">
       <Header heading={"log in"}></Header>
-      <CustomLinkListCreator linkText={"Continue with email"} route={"/login/email"} />
+      <div className="email-div">
+        <Link className="email-login" to="/login">
+          Continue with email{" "}
+        </Link>
+      </div>
 
       <div className="loginRedirectDiv">
-
-        <p className="loginRedirect"> Not a member yet? </p>
-        <Link className="loginLink" to={"/register"}>Sign up</Link>
+        <p className="loginRedirect">
+          {" "}
+          Not a member yet?{" "}
+          <Link className="loginLink" to={"/register"}>
+            Sign up
+          </Link>{" "}
+        </p>
       </div>
     </div>
-  )
+  );
 }

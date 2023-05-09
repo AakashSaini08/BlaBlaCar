@@ -43,7 +43,7 @@ function* postLoginData(payload) {
 function* sendPasswordResetMailData(payload) {
     try {
         yield put(settingLoaderState(true))
-        const res = yield axios.post(
+         yield axios.post(
             BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, { user: payload?.payload }
         );
         yield put(settingLoaderState(false))
@@ -56,7 +56,7 @@ function* sendPasswordResetMailData(payload) {
 function* sendResetPassword(payload) {
     try {
         yield put(settingLoaderState(true))
-        const res = yield axios.put(
+        yield axios.put(
             BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, { user: payload?.payload }
         );
         yield put(settingLoaderState(false))
@@ -74,7 +74,7 @@ function* uploadingPic(payload) {
         };
         console.log(payload?.payload, "imageinsaga")
         yield put(settingLoaderState(true))
-        const res = yield axios.put(
+        yield axios.put(
             BASE_URL + URL_EXTENSIONS.PROFILE_PIC, payload?.payload, config
         );
         payload?.successImageUpload()

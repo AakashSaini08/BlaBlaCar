@@ -2,7 +2,7 @@
     height: 72px;
     position: fixed;
     width: 100%;
-    height: 56px;
+    height: 70px;
     padding: 0px 12px;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -14,7 +14,7 @@
 .header-content{
     width: 100%;
     display: flex;
-    margin-top: 15px;
+    margin-top: 3px;
     height: 50px;
     font-weight: 500;
 }
@@ -117,4 +117,39 @@
 .userName{
     margin-right: 10px;
     font-size: large;
+}
+
+.search-btn{
+    border: none;
+    background-color: white;
+    color: #00AFF5;
+    font-size: 16px;
+    font-weight:600;
+    margin-top: 13px ;
+    text-decoration: none;
+    margin-right: 15px;
+    cursor: pointer;
+
+}
+.search-icon{
+    margin-top: 12px;
+    margin-right: 5px;
+
+}
+.publish-icon{
+    margin-top: 12px;
+    margin-right: 5px;
+}
+
+.publish-btn{
+    border: none;
+    background-color: white;
+    color: #00AFF5;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 13px ;
+    margin-right: 15px;
+    text-decoration: none;
+    cursor: pointer;
+
 }

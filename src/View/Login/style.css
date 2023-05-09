@@ -1,0 +1,38 @@
+.email-login{
+    font-size: 20px;
+    text-decoration: none;
+    color: #054652;
+}
+
+.email-div{
+    width: 550px;
+    height: 30px;
+    text-align: left;
+    padding: 10px;
+    margin: auto;
+}
+.email-div:hover{
+    width: 550px;
+    text-align: left;
+    margin: auto;
+    background-color: lightgrey;
+    padding: 10px 15px;
+    border-radius: 25px;
+}
+.loginRedirectDiv{
+    font-size: 16px;
+    text-decoration: none;
+    color: #054652;
+    width: 550px;
+    /* margin-top: 40px; */
+    text-align: left;
+    margin: auto;
+}
+.loginLink{
+    color: #00AFF5;
+    text-decoration: none;
+}
+.signin-footer{
+    font-size: 12px;
+    color: #6f8b90;
+}
