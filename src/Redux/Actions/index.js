@@ -47,6 +47,7 @@ export const registerData = {
   },
 
 }
+
 export const loginData = {
   signin: (payload,successLogin,failedLogin) => {
     return {

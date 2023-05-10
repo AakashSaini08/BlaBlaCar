@@ -23,7 +23,7 @@ export default function EmailInput() {
         }
         else {
              dispatch(registerData?.email(email))
-            navigate("/register/name")
+            navigate("/username")
         }
     }
 

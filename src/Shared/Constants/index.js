@@ -1,5 +1,5 @@
 export const STRINGS={
-    BIRTHDATE_HEADING:"What is your date?",
+    BIRTHDATE_HEADING:"What is your date of birth?",
     EMAIL_HEADING:"What is your email?",
     NAME_HEADING:"What is your name?",
     GENDER_SELECT_HEADING:"How would you like to be addressed?",
@@ -17,7 +17,7 @@ export const STRINGS={
 export const REGEX={
     email:"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
     name: "[a-zA-Z][a-zA-Z]+",
-    password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})",
+    password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})",
     numberAndText:"/^[a-zA-Z0-9]+$/",
     numer:"/^[0-9]+$/"
 }

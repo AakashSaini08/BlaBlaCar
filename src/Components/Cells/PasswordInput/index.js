@@ -10,10 +10,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { registerData } from '../../../Redux/Actions'
 export default function PasswordInput() {
   const dispatch=useDispatch()
-  const registeredData=useSelector(state=>state)
+  const registeredDataa=useSelector(state=>state)
     const [password, setPassword] = useState("")
     const [validationMessage, setValidationMessage] = useState("")
     const [inputType,setInputType]=useState("password")
+
+    const registerDataa = useSelector((state) => state?.registerReducer);
+    console.log(registerDataa,"dfkjsdfjj")
+
     const navigate=useNavigate()
     const successRegister=(res)=>{
       navigate("/")
@@ -30,10 +34,7 @@ export default function PasswordInput() {
         setValidationMessage(VALIDATION_MESSAGES?.PASSWORD?.NOT_VALID)
     }
     else {
-    
-      dispatch(registerData?.password(password))
-  
-      dispatch(registerData?.signup({...registeredData?.registerReducer,password:password},successRegister,failedRegister))
+      dispatch(registerData?.signup({...registeredDataa?.registerReducer,password:password},successRegister,failedRegister))
   }
     }
   return (

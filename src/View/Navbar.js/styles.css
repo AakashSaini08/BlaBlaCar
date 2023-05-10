@@ -2,7 +2,7 @@
     height: 72px;
     position: fixed;
     width: 100%;
-    height: 70px;
+    height: 60px;
     padding: 0px 12px;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -14,8 +14,7 @@
 .header-content{
     width: 100%;
     display: flex;
-    margin-top: 3px;
-    height: 50px;
+    margin-top: 4px;
     font-weight: 500;
 }
 .headerData{
@@ -24,11 +23,8 @@
     gap: 24px;
     flex: 1 1 0%;
     display: flex;
-    margin-top: -10px;
-    margin-left: 35px;
+    margin-top: -8px;
 }
-
-
 .Logo{
     display: flex;
     -webkit-box-align: center;
@@ -118,38 +114,6 @@
     margin-right: 10px;
     font-size: large;
 }
-
-.search-btn{
-    border: none;
-    background-color: white;
-    color: #00AFF5;
-    font-size: 16px;
-    font-weight:600;
-    margin-top: 13px ;
-    text-decoration: none;
-    margin-right: 15px;
-    cursor: pointer;
-
-}
-.search-icon{
-    margin-top: 12px;
-    margin-right: 5px;
-
-}
-.publish-icon{
-    margin-top: 12px;
-    margin-right: 5px;
-}
-
-.publish-btn{
-    border: none;
-    background-color: white;
-    color: #00AFF5;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 13px ;
-    margin-right: 15px;
-    text-decoration: none;
-    cursor: pointer;
-
+h4{
+    color: #054752;
 }

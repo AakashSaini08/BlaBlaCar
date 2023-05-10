@@ -6,32 +6,46 @@ import { LOCALSTORAGE_KEY_NAME } from "../../Shared/Constants";
 import { savingProfilePic, setVehicleData, settingLoaderState } from "../Actions";
 
 function* postRegisterData(payload) {
+    // console.log(payload.payload,"asdasd")
+    const formData = new FormData();
+    formData.append("first_name", payload.payload.first_name);
+    formData.append("last_name",payload.payload.last_name );
+    formData.append("password",payload.payload.password);
+    formData.append("email", payload.payload.email);
+    formData.append("dob", payload.payload.dob);
+    formData.append("title", payload.payload.title);
+    // console.log(formData,"My form Data")
+
     try {
         yield put(settingLoaderState(true))
-        const res = yield axios.post(BASE_URL + URL_EXTENSIONS.SIGN_UP, { user: payload?.payload });
+        const res = yield axios.post(BASE_URL + URL_EXTENSIONS.SIGN_UP, formData);
+        // console.log(res.data,"register response");
         if (res) {
-            localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
-            localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
+            localStorage.setItem(LOCALSTORAGE_KEY_NAME, JSON.stringify(res?.data?.token))
+            localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.data?.first_name))
         }
         yield(put(payload?.successRegister()))
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
         yield(put(payload?.failedRegister(error?.response?.data||"server not responding")))
-        console.log(error, "errorInRegister")
+        // console.log(error, "errorInRegister")
     }
 }
 // successLogin,failedLogin
 function* postLoginData(payload) {
+    // console.log(payload.payload,"login data");
+    const formData = new FormData();
+    formData.append("password",payload.payload.password);
+    formData.append("email", payload.payload.email);
     try {
         yield put(settingLoaderState(true))
         const res = yield axios.post(
-            BASE_URL + URL_EXTENSIONS.SIGN_IN, { user: payload?.payload }
-        );
+            BASE_URL + URL_EXTENSIONS.SIGN_IN, formData);
         payload?.successLogin()
         if (res) {
-            localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
-            localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
+            localStorage.setItem(LOCALSTORAGE_KEY_NAME, JSON.stringify(res?.data?.token))
+            localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.data?.first_name))
         }
         yield put(settingLoaderState(false))
     } catch (error) {

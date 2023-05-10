@@ -33,7 +33,7 @@ export default function NameInput() {
     else {
       dispatch(registerData?.firstName(firstName))
       dispatch(registerData?.lastName(lastName))
-      navigate("/register/birthDate")
+      navigate("/dob")
     }
     }
       

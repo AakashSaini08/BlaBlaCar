@@ -6,8 +6,7 @@ const initialStateForRegister = {
     "first_name": "",
     "last_name": "",
     "dob": "",
-    "title": "",
-    "phone_number": ""
+    "title": ""
 }
 export const registerReducer = (state = initialStateForRegister, action) => {
     switch (action?.type) {

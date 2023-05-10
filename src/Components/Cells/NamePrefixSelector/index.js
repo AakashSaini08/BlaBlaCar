@@ -3,7 +3,7 @@ import Header from '../../Atoms/Header'
 import "./styles.css"
 import CustomLinkListCreator from '../../Atoms/CustomLinkListCreator'
 import { STRINGS } from '../../../Shared/Constants'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { registerData } from '../../../Redux/Actions'
 
@@ -13,7 +13,7 @@ export default function NamePrefixSelector() {
     const navigate=useNavigate()
     const handleSelect=(val)=>{
         dispatch(registerData?.nameTitle(val))
-        navigate("/register/password" )
+        navigate("/password" )
     }
 
     return (

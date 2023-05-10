@@ -31,6 +31,8 @@
     box-sizing: border-box;
     color: rgb(5, 70, 82);
     background-color: rgb(255, 255, 255);
+    border:solid;
+    border-width: thin;
     border-radius: 16px;
     box-shadow: transparent 0px 0px 0px 3px;
     transition: box-shadow 200ms ease-out 0s;

@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Header from '../../Atoms/Header'
-import CustomInput from '../../Atoms/CustomInput'
 import ContinueButton from '../../Atoms/ContinueButton'
 import { useNavigate } from 'react-router-dom'
 import { STRINGS } from '../../../Shared/Constants'
@@ -13,9 +12,8 @@ export default function BirthDateInput() {
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate()
   const handleSubmit = () => {
-
-    dispatch(registerData?.date(startDate.toLocaleString().split(",")[0]))
-    navigate("/register/gender")
+    dispatch(registerData?.date(startDate.toISOString().slice(0, 10)))
+    navigate("/gender")
   }
   return (
     <>

@@ -4,18 +4,16 @@ import { STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
 import CustomInput from '../../Atoms/CustomInput'
 import ContinueButton from '../../Atoms/ContinueButton'
 import { isValidEmail, isValidPassword } from '../../../Shared/Utilities'
-import { loginData, registerData } from '../../../Redux/Actions'
+import { loginData } from '../../../Redux/Actions'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+
 import ForgetPassword from '../../Atoms/ForgetPassword'
-import Loader from '../../Atoms/Loader'
-import PasswordInput from '../PasswordInput'
+
 
 export default function LoginInputs() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
- 
     const [password, setPassword] = useState("")
     const [validationMessageEmail, setValidationMessageEmail] = useState()
     const [validationMessagePassword, setValidationMessagePassword] = useState()
