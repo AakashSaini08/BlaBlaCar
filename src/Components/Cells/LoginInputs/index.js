@@ -24,7 +24,7 @@ export default function LoginInputs() {
         navigate("/")
     }
     const failedLogin=(res)=>{
-        setValidationMessagePassword(res)
+        setValidationMessagePassword(res.msg)
     }
 
     const handleSubmit = () => {

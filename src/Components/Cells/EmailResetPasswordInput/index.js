@@ -3,17 +3,17 @@ import Header from '../../Atoms/Header'
 import { STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
 import CustomInput from '../../Atoms/CustomInput'
 import ContinueButton from '../../Atoms/ContinueButton'
-import { isValidEmail, isValidPassword } from '../../../Shared/Utilities'
-import { loginData, registerData, sendPasswordResetMail } from '../../../Redux/Actions'
+import { isValidEmail} from '../../../Shared/Utilities'
+import { sendPasswordResetMail } from '../../../Redux/Actions'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import ForgetPassword from '../../Atoms/ForgetPassword'
+// import { useNavigate } from 'react-router-dom'
+// import ForgetPassword from '../../Atoms/ForgetPassword'
 
 export default function LoginForgetPassword() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [validationMessageEmail, setValidationMessageEmail] = useState()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const handleSubmit = () => {
         if (!email.trim()) {
             setValidationMessageEmail(VALIDATION_MESSAGES?.EMAIL?.EMPTY)
@@ -23,7 +23,7 @@ export default function LoginForgetPassword() {
         }
         else {
             dispatch(sendPasswordResetMail({ email: email }))
-            // navigate("/")
+            // navigate("/resetPassword")
         }
     }
     return (

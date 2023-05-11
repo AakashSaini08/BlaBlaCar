@@ -11,10 +11,10 @@ export default function Navbar() {
     const currentPath = useLocation()
     const token = localStorage.getItem("token")
     const CurrentUser = localStorage.getItem("CurrentUser")
-    console.log(CurrentUser,"fdsfdsfd")
+
     const [dropDownIconPosition, setDropDownIconPosition] = useState("dropDownIconDown")
     const [dropDownListShow, setDropDownListShow] = useState(false)
-    const dropDownListDataForGuest = [{ linkText: "Log in ", route: "/login" }, { linkText: "Sign up", route: "/register" }]
+    const dropDownListDataForGuest = [{ linkText: "Log in ", route: "/login" }, { linkText: "Sign up", route: "/signup" }]
     const dropDownListDataForUser = [{ linkText: "Your Rides", route: "/rides" }, { linkText: "Inbox", route: "/messages/list" }, { linkText: "Profile", route: "/dashboard/profile/menu" }, { linkText: "Logout", route: "/" }]
     const handleDropDownIconPosition = () => {
         if (dropDownIconPosition === "dropDownIconDown") {
@@ -35,7 +35,7 @@ export default function Navbar() {
                     </span>
                 </div>
                     {(!currentPath?.pathname?.includes("register")||token) && <Linkto linkText={"Publish a ride"}/>}
-                    <h4>{CurrentUser.replace(/^["'](.+(?=["']$))["']$/, '$1')}</h4>
+                    <h4>{CurrentUser?.replace(/^["'](.+(?=["']$))["']$/, '$1')}</h4>
                     {(!currentPath?.pathname?.includes("register")||token) && <NavContent handleDropDownIconPosition={handleDropDownIconPosition} dropDownIconPosition={dropDownIconPosition} />}
                     {dropDownListShow && <DropDownListViewer dropDownListData={!token ? dropDownListDataForGuest : dropDownListDataForUser} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}
                            </div>

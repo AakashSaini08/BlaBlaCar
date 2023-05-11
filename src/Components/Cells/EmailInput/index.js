@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
 import { isValidEmail } from '../../../Shared/Utilities'
 import { useDispatch } from 'react-redux'
-import { registerData } from '../../../Redux/Actions'
+import { checkemail, registerData } from '../../../Redux/Actions'
 export default function EmailInput() {
     const dispatch=useDispatch()
     const [email, setEmail] = useState("")
@@ -22,7 +22,8 @@ export default function EmailInput() {
             setValidationMessage(VALIDATION_MESSAGES?.EMAIL?.NOT_VALID)
         }
         else {
-             dispatch(registerData?.email(email))
+            dispatch(checkemail(email))
+            dispatch(registerData?.email(email))
             navigate("/username")
         }
     }

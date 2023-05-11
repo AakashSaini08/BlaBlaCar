@@ -4,6 +4,7 @@ import { ACTION_STATES } from "../ActionStates";
 import { BASE_URL, URL_EXTENSIONS } from "../../Services/Api/Constants";
 import { LOCALSTORAGE_KEY_NAME } from "../../Shared/Constants";
 import { savingProfilePic, setVehicleData, settingLoaderState } from "../Actions";
+import { axiosInstance } from "../../Shared/Request/Request";
 
 function* postRegisterData(payload) {
     // console.log(payload.payload,"asdasd")
@@ -32,6 +33,38 @@ function* postRegisterData(payload) {
         // console.log(error, "errorInRegister")
     }
 }
+
+    function* logoutnow(payload){
+        try {
+            yield put(settingLoaderState(true))
+             yield axiosInstance.post(
+                BASE_URL + URL_EXTENSIONS.LOGOUT 
+            );
+            yield put(settingLoaderState(false))
+    
+        } catch (error) {
+            yield put(settingLoaderState(false))
+            console.log(error, "error in logging out")
+        }
+    }
+
+    function* checkEmail(payload){
+        console.log(payload,"sasasasa")
+        try {
+            yield put(settingLoaderState(true))
+             yield axios.get(
+                BASE_URL + URL_EXTENSIONS.CHECKEMAIL+"?email=" +payload.payload
+            );
+            yield put(settingLoaderState(false))
+    
+        } catch (error) {
+            yield put(settingLoaderState(false))
+            console.log(error, "error in logging out")
+        }
+    }
+
+
+
 // successLogin,failedLogin
 function* postLoginData(payload) {
     // console.log(payload.payload,"login data");
@@ -55,10 +88,14 @@ function* postLoginData(payload) {
 }
 
 function* sendPasswordResetMailData(payload) {
+    console.log(payload,"endPasswordResetMailData");
+    const formData = new FormData();
+    formData.append("email", payload.payload.email);
+
     try {
         yield put(settingLoaderState(true))
          yield axios.post(
-            BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, { user: payload?.payload }
+            BASE_URL + URL_EXTENSIONS.SEND_MAIL, formData
         );
         yield put(settingLoaderState(false))
 
@@ -68,14 +105,22 @@ function* sendPasswordResetMailData(payload) {
     }
 }
 function* sendResetPassword(payload) {
+    // console.log(payload,"##########")
+    const formData = new FormData();
+    formData.append("password", payload.payload.password);
+    formData.append("id", payload.payload.id);
+    formData.append("token", payload.payload.token);
+
     try {
         yield put(settingLoaderState(true))
-        yield axios.put(
-            BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, { user: payload?.payload }
+        yield axios.post(
+            BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, formData
         );
+        payload?.successLogin()
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
+        payload?.failedLogin(error?.response?.data||"server not responding")
         console.log(error, "error in reseting password")
     }
 }
@@ -234,6 +279,8 @@ function* updateVehicleDetails(payload) {
 
 function* Saga() {
     yield all([
+        takeLatest(ACTION_STATES.LOGOUT, logoutnow),
+        takeLatest(ACTION_STATES.CHECKEMAIL, checkEmail),
         takeLatest(ACTION_STATES.SIGN_UP, postRegisterData),
         takeLatest(ACTION_STATES.SIGN_IN, postLoginData),
         takeLatest(ACTION_STATES.SEND_FORGET_PASSWORD_MAIL, sendPasswordResetMailData),
