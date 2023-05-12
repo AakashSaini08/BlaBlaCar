@@ -1,41 +1,52 @@
-import React, { useState } from 'react'
-import CustomInput from '../../Atoms/CustomInput'
-import ContinueButton from '../../Atoms/ContinueButton'
-import Header from '../../Atoms/Header'
-import "./styles.css"
-import { useNavigate } from 'react-router-dom'
-import { STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
-import { isValidEmail } from '../../../Shared/Utilities'
-import { useDispatch } from 'react-redux'
-import { checkemail, registerData } from '../../../Redux/Actions'
+import React, { useState } from "react";
+import CustomInput from "../../Atoms/CustomInput";
+import ContinueButton from "../../Atoms/ContinueButton";
+import Header from "../../Atoms/Header";
+import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import { STRINGS, VALIDATION_MESSAGES } from "../../../Shared/Constants";
+import { isValidEmail } from "../../../Shared/Utilities";
+import { useDispatch } from "react-redux";
+import { checkemail, registerData } from "../../../Redux/Actions";
 export default function EmailInput() {
-    const dispatch=useDispatch()
-    const [email, setEmail] = useState("")
-    const [validationMessage, setValidationMessage] = useState()
-    const navigate = useNavigate()
- 
-    const handleSubmit = () => {
-        if (!email.trim()) {
-            setValidationMessage(VALIDATION_MESSAGES?.EMAIL?.EMPTY)
-        }
-        else if (!isValidEmail.test(email)) {
-            setValidationMessage(VALIDATION_MESSAGES?.EMAIL?.NOT_VALID)
-        }
-        else {
-            dispatch(checkemail(email))
-            dispatch(registerData?.email(email))
-            navigate("/username")
-        }
-    }
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [validationMessage, setValidationMessage] = useState();
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <Header heading={STRINGS?.EMAIL_HEADING} />
-            <div className='section'>
-                <CustomInput state={email} setState={setEmail} placeHolder="email" validationMessage={validationMessage} setValidationMessage={setValidationMessage} handleSubmit={handleSubmit} />
-                <label className='validationMessage'>{validationMessage}</label>
-            </div>
-            <ContinueButton handleSubmit={handleSubmit} />
-        </>
-    )
+  const successLogin = () => {
+    navigate("/username");
+  };
+  const failedLogin = (res) => {
+    setValidationMessage(res.msg);
+  };
+
+  const handleSubmit = () => {
+    if (!email.trim()) {
+      setValidationMessage(VALIDATION_MESSAGES?.EMAIL?.EMPTY);
+    } else if (!isValidEmail.test(email, successLogin, failedLogin)) {
+      setValidationMessage(VALIDATION_MESSAGES?.EMAIL?.NOT_VALID);
+    } else {
+      dispatch(checkemail(email, successLogin, failedLogin));
+      dispatch(registerData?.email(email));
+    }
+  };
+
+  return (
+    <>
+      <Header heading={STRINGS?.EMAIL_HEADING} />
+      <div className="section">
+        <CustomInput
+          state={email}
+          setState={setEmail}
+          placeHolder="email"
+          validationMessage={validationMessage}
+          setValidationMessage={setValidationMessage}
+          handleSubmit={handleSubmit}
+        />
+        <label className="validationMessage">{validationMessage}</label>
+      </div>
+      <ContinueButton handleSubmit={handleSubmit} />
+    </>
+  );
 }

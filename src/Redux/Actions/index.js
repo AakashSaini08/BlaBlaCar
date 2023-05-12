@@ -48,10 +48,12 @@ export const registerData = {
   },
 };
 
-export const checkemail = (payload) => {
+export const checkemail = (payload,successLogin,failedLogin) => {
   return {
     type: ACTION_STATES.CHECKEMAIL,
     payload,
+    successLogin,
+    failedLogin
   };
 };
 
@@ -177,3 +179,27 @@ export const updateVehicleData = (payload, id, navigateToProfile) => {
     navigateToProfile,
   };
 };
+
+export const sendEmailVerificationLink = (payload, successSend, failedSend) => {
+
+  return {
+    type: ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK,
+    payload,
+    successSend,
+    failedSend
+  }
+}
+
+export const confirmemailotp = (payload, successSend, failedSend) => {
+console.log(payload,"otp confirm action")
+  return {
+    type: ACTION_STATES.CONFIRM_EMAIL_OTP,
+    payload,
+    successSend,
+    failedSend
+  }
+}
+
+
+
+

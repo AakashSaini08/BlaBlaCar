@@ -1,5 +1,5 @@
 export const STRINGS={
-    BIRTHDATE_HEADING:"What is your date of birth?",
+    BIRTHDATE_HEADING:"What is your Birth date?",
     EMAIL_HEADING:"What is your email?",
     NAME_HEADING:"What is your name?",
     GENDER_SELECT_HEADING:"How would you like to be addressed?",
@@ -10,7 +10,17 @@ export const STRINGS={
     FORGOT_PASSWORD:"What's your email? Check your inbox for a link to create a new password.",
     RESET_PASSWORD:"Reset Password",
     MINI_BIO_HEADING:"What would you like other members to know about you?",
-    ADDING_VEHICLE_DETAILS:"What is your license plate number?"
+    ADDING_VEHICLE_DETAILS:"What is your license plate number?",
+    VERIFY_EMAIL:"Click to verify Email",
+    PUBLISH_RIDE:"Become a BlaBlaCar driver and save on travel costs by sharing your ride with passengers.",
+    PICKUP:"Pick-up",
+    PICKUP_FROM_MAP:"Where would you like to pick up passengers?",
+    DROPOF:"Drop-off",
+    DROPOF_LOCATION_MAP:"Where would you like to drop off passengers?",
+    SELECT_ROUTE:"What is your route?",
+    ADD_STOP:"Add stopovers to get more passengers",
+    WHEN_GOING:"When are you going?",
+    ON_WHAT_TIME:"At what time will you pick passengers up?"
 }
 
 
@@ -76,7 +86,25 @@ export const VALIDATION_MESSAGES={
         EMPTY:"*VehicleModelYear Required",
       
     },
+    DATE:{
+        NOT_VALID:"Enter Valid Date",   
+        EMPTY:"*Date Required",
+      
+    },
+    TIME:{
+        NOT_VALID:"Enter Valid Time",   
+        EMPTY:"*Time Required",
+      
+    },
+
 }
 
 
 export const LOCALSTORAGE_KEY_NAME="token"
+
+
+
+export const BUTTONTEXT={
+    PUBLISH_RIDE:"Publish Ride",
+    CONTINUE:"Continue"
+}

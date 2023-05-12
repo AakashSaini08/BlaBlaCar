@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../../Atoms/Header'
-import ContinueButton from '../../Atoms/ContinueButton'
 import "./styles.css"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { uploadProfilePic } from '../../../Redux/Actions'
 import { useNavigate } from 'react-router-dom'
 export default function AddOrEditProfilePic() {
@@ -10,14 +9,11 @@ export default function AddOrEditProfilePic() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
 const successImageUpload=()=>{
-  navigate("/dashboard/profile/menu")
+  navigate("/profile")
 }
     const handleSubmit=()=>{
       const formData = new FormData();
-      formData.append("image", image);
-      console.log(formData,"formData")
-       
-
+      formData.append("profile", image);
     dispatch(uploadProfilePic(formData,successImageUpload))
 
      

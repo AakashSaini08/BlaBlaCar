@@ -15,7 +15,7 @@ export default function Navbar() {
     const [dropDownIconPosition, setDropDownIconPosition] = useState("dropDownIconDown")
     const [dropDownListShow, setDropDownListShow] = useState(false)
     const dropDownListDataForGuest = [{ linkText: "Log in ", route: "/login" }, { linkText: "Sign up", route: "/signup" }]
-    const dropDownListDataForUser = [{ linkText: "Your Rides", route: "/rides" }, { linkText: "Inbox", route: "/messages/list" }, { linkText: "Profile", route: "/dashboard/profile/menu" }, { linkText: "Logout", route: "/" }]
+    const dropDownListDataForUser = [{ linkText: "Your Rides", route: "/rides" }, { linkText: "Inbox", route: "/messages/list" }, { linkText: "Profile", route: "/profile" }, { linkText: "Logout", route: "/" }]
     const handleDropDownIconPosition = () => {
         if (dropDownIconPosition === "dropDownIconDown") {
             setDropDownIconPosition("dropDownIconUp")

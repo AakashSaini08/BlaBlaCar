@@ -7,7 +7,6 @@ export const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = JSON.parse(localStorage.getItem("token"));
-    console.log(token,"dfdsffdssfdsf")
     if (token) {
       config.headers.Authorization = "Token " + token;
     }

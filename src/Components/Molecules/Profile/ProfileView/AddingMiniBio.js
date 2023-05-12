@@ -12,7 +12,7 @@ export default function AddingMiniBio({ show, setShow = () => { } }) {
   const dispatch = useDispatch()
   const [bioValidationMessage, setBioValidationMessage] = useState("")
   const handleSubmit = () => {
-    if (bio.trim().length < 15 || bio.split("").some(val => !isNaN(val))) {
+    if (bio.trim().length < 15 ) {
       setBioValidationMessage(VALIDATION_MESSAGES?.BIO)
     }
     else {
