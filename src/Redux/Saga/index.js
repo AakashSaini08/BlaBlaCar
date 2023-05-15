@@ -24,7 +24,7 @@ function* postRegisterData(payload) {
   try {
     yield put(settingLoaderState(true));
     const res = yield axios.post(BASE_URL + URL_EXTENSIONS.SIGN_UP, formData);
-    console.log(res.data,"register response");
+    console.log(res.data, "register response");
     if (res) {
       localStorage.setItem(
         LOCALSTORAGE_KEY_NAME,
@@ -94,10 +94,7 @@ function* postLoginData(payload) {
         "CurrentUser",
         JSON.stringify(res?.data?.data?.first_name)
       );
-      localStorage.setItem(
-        "email",
-        JSON.stringify(res?.data?.data?.email)
-      );
+      localStorage.setItem("email", JSON.stringify(res?.data?.data?.email));
     }
     yield put(settingLoaderState(false));
   } catch (error) {
@@ -176,13 +173,16 @@ function* gettingProfilePic() {
 
 function* updateProfileData(payload) {
   try {
-    const token = localStorage.getItem("token");
-    const config = { headers: { Authorization: token } };
+    const formData = new FormData();
+    formData.append("dob", payload.payload.dob);
+    formData.append("email", payload.payload.email);
+    formData.append("first_name", payload.payload.first_name);
+    formData.append("last_name", payload.payload.last_name);
+
     yield put(settingLoaderState(true));
-    const res = yield axios.put(
-      BASE_URL + URL_EXTENSIONS.SIGN_UP,
-      { user: payload?.payload },
-      config
+    const res = yield axiosInstance.patch(
+      BASE_URL + URL_EXTENSIONS.USER_PROFILE,
+      formData
     );
     console.log(res?.data?.status?.data, "profileUpdated");
     // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
@@ -193,12 +193,12 @@ function* updateProfileData(payload) {
   }
 }
 function* sendingEmailVerificationLink(payload) {
-    console.log(payload,"<<<<>>>>>>")
+  console.log(payload, "<<<<>>>>>>");
   try {
     yield put(settingLoaderState(true));
     const res = yield axiosInstance.post(
       BASE_URL + URL_EXTENSIONS.EMAIL_VERIFICATION,
-      payload?.payload,
+      payload?.payload
     );
     payload.successSend(res);
     yield put(settingLoaderState(false));
@@ -210,12 +210,12 @@ function* sendingEmailVerificationLink(payload) {
 }
 
 function* confirmEmailOtp(payload) {
-    console.log(payload,"[[[[[]]]]]]]]")
+  console.log(payload, "[[[[[]]]]]]]]");
   try {
     yield put(settingLoaderState(true));
     const res = yield axiosInstance.post(
       BASE_URL + URL_EXTENSIONS.CONFIRM_EMAIL_OTP,
-      payload?.payload,
+      payload?.payload
     );
     payload.successSend(res);
     yield put(settingLoaderState(false));
@@ -227,7 +227,6 @@ function* confirmEmailOtp(payload) {
 }
 
 function* updateBioData(payload) {
-  // console.log(payload,"<<<<<<<<<>>>>>>>>>>>")
   const formData = new FormData();
   formData.append("addbio", payload.payload.bio);
   try {
@@ -237,11 +236,14 @@ function* updateBioData(payload) {
       BASE_URL + URL_EXTENSIONS.ADDBIO,
       formData
     );
+    payload.successSend(res);
+
     // console.log(res?.data?.status?.data, "bioUpdated");
     // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
     yield put(settingLoaderState(false));
   } catch (error) {
     yield put(settingLoaderState(false));
+    payload.failedSend(error?.response?.data);
     console.log(error, "errorInLogin");
   }
 }
@@ -323,6 +325,31 @@ function* updateVehicleDetails(payload) {
   }
 }
 
+function* updatePassword(payload) {
+  const formData = new FormData();
+  console.log(payload.payload, "saga change psw");
+  formData.append("oldpassword", payload.payload.oldpassword);
+  formData.append("password", payload.payload.password);
+
+  try {
+    // console.log(payload.payload.bio,"sssssss")
+    yield put(settingLoaderState(true));
+    const res = yield axiosInstance.post(
+      BASE_URL + URL_EXTENSIONS.CHANGE_PASSWORD,
+      formData
+    );
+    payload.successPsw(res);
+
+    // console.log(res?.data?.status?.data, "bioUpdated");
+    // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    payload.failedPsw(error?.response?.data);
+    console.log(error, "errorInLogin");
+  }
+}
+
 function* Saga() {
   yield all([
     takeLatest(ACTION_STATES.LOGOUT, logoutnow),
@@ -334,7 +361,10 @@ function* Saga() {
       sendPasswordResetMailData
     ),
     takeLatest(ACTION_STATES.CONFIRM_EMAIL_OTP, confirmEmailOtp),
-    takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK, sendingEmailVerificationLink),
+    takeLatest(
+      ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK,
+      sendingEmailVerificationLink
+    ),
     takeLatest(ACTION_STATES.SEND_RESET_PASSWORD, sendResetPassword),
     takeLatest(ACTION_STATES.UPDATE_PROFILE, updateProfileData),
     takeLatest(ACTION_STATES.ADDING_MINI_BIO, updateBioData),
@@ -344,6 +374,7 @@ function* Saga() {
     takeLatest(ACTION_STATES.GET_VEHICLE_DATA, getVehicle),
     takeLatest(ACTION_STATES.DELETE_VEHICLE, deleteVehicleData),
     takeLatest(ACTION_STATES.UPDATE_VEHICLE, updateVehicleDetails),
+    takeLatest(ACTION_STATES.CHANGE_PASSWORD, updatePassword),
   ]);
 }
 export default Saga;

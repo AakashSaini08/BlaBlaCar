@@ -20,7 +20,8 @@ export const STRINGS={
     SELECT_ROUTE:"What is your route?",
     ADD_STOP:"Add stopovers to get more passengers",
     WHEN_GOING:"When are you going?",
-    ON_WHAT_TIME:"At what time will you pick passengers up?"
+    ON_WHAT_TIME:"At what time will you pick passengers up?",
+    CHANGE_PASSWORD:"Change password"
 }
 
 
@@ -49,6 +50,10 @@ export const VALIDATION_MESSAGES={
         NOT_VALID:"Enter Valid Password",   
         EMPTY:"*Password Required",
       
+    },
+    CHANGE_PASSWORD:{
+        NOT_MATCHED:"Password doesn't matched",   
+        EMPTY:"*Password Required",
     },
     BIO:"enter more than 15 character and numbers are not accepted  "
     ,  COUNTRY:{

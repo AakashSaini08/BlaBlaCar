@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "./styles.css"
 import "react-datepicker/dist/react-datepicker.css";    
 
 
 
-const DateInput = ({validationMessage="" ,startDate,setStartDate}) => {
+const DateInput = ({validationMessage="" ,startDate,setStartDate=()=>{},minDate,setValidationMessageDOB=()=>{}}) => {
  
   return (
     <div className='section-data'>
@@ -15,8 +15,11 @@ const DateInput = ({validationMessage="" ,startDate,setStartDate}) => {
     showIcon
     placeholderText="Select a weekday"
     className="singup-date-picker"
-    selected={startDate} onChange={(date) => setStartDate(date)} 
-    minDate={'01-01-1960'}/>
+    selected={startDate} onChange={(date) => {setStartDate(date)
+      setValidationMessageDOB("")}
+    } 
+     minDate={minDate?minDate:'01-01-1960'}
+     maxDate={!minDate?new Date():new Date().setMonth(new Date().getMonth() + 2)}/>
     </div>
         <br />
     </div>

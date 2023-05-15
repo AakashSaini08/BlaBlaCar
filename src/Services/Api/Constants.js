@@ -1,4 +1,4 @@
-export const BASE_URL="https://28bc-112-196-113-2.ngrok-free.app/"
+export const BASE_URL="https://0c1f-112-196-113-2.ngrok-free.app/"
 export const URL_EXTENSIONS={
     SIGN_UP:"signup/",
     SIGN_IN:"login/",
@@ -11,5 +11,6 @@ export const URL_EXTENSIONS={
     ADDBIO:"addbio/",
     EMAIL_VERIFICATION:"sendemailotp/",
     CONFIRM_EMAIL_OTP:"confirmemailotp/",
-    USER_PROFILE:"userprofile",
+    USER_PROFILE:"userprofile/",
+    CHANGE_PASSWORD:"changepassword/"
 }

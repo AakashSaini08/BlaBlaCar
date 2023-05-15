@@ -1,27 +1,37 @@
 import React, { useState } from 'react'
 import Header from '../../../Atoms/Header'
 import { STRINGS, VALIDATION_MESSAGES } from '../../../../Shared/Constants'
-import ModalComponent from '../../../Cells/Modal'
+// import ModalComponent from '../../../Cells/Modal'
 import ContinueButton from '../../../Atoms/ContinueButton'
 import { useDispatch } from 'react-redux'
 import { addingBio } from '../../../../Redux/Actions'
 import ValidationText from '../../../Atoms/ValidationText'
+import { useNavigate } from 'react-router-dom'
 
-export default function AddingMiniBio({ show, setShow = () => { } }) {
+export default function AddingMiniBio() {
   const [bio, setBio] = useState("")
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [bioValidationMessage, setBioValidationMessage] = useState("")
+
+  const succesSend=(res)=>{
+    navigate('/profile')
+    setBioValidationMessage(res)
+  }
+  const failedSend=(res)=>{
+    setBioValidationMessage(res)
+  }
   const handleSubmit = () => {
     if (bio.trim().length < 15 ) {
       setBioValidationMessage(VALIDATION_MESSAGES?.BIO)
     }
     else {
-      dispatch(addingBio({ bio: bio }))
-      setShow(false)
+      dispatch(addingBio({ bio: bio },succesSend,failedSend))
     }
   }
   return (
-    <ModalComponent show={show} setShow={setShow}>
+
+    <>
       <Header heading={STRINGS?.MINI_BIO_HEADING} />
       <div>
 
@@ -33,6 +43,6 @@ export default function AddingMiniBio({ show, setShow = () => { } }) {
       <ValidationText message={bioValidationMessage} />
 
       <ContinueButton ButtonText='save' handleSubmit={handleSubmit} />
-    </ModalComponent>
+      </>
   )
 }

@@ -120,15 +120,18 @@ export const uploadProfilePic = (payload, successImageUpload) => {
   };
 };
 export const updateProfile = (payload) => {
+  console.log(payload,"action")
   return {
     type: ACTION_STATES.UPDATE_PROFILE,
     payload,
   };
 };
-export const addingBio = (payload) => {
+export const addingBio = (payload, successSend, failedSend) => {
   return {
     type: ACTION_STATES.ADDING_MINI_BIO,
     payload,
+    successSend,
+    failedSend
   };
 };
 
@@ -199,6 +202,18 @@ console.log(payload,"otp confirm action")
     failedSend
   }
 }
+
+export const changePassword = (payload, successPsw, failedPsw) => {
+  console.log(payload,"psw confirm action")
+    return {
+      type: ACTION_STATES.CHANGE_PASSWORD,
+      payload,
+      successPsw,
+      failedPsw
+    }
+  }
+
+
 
 
 

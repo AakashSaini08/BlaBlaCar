@@ -25,12 +25,11 @@ export default function EmailVerificationLinkModal({ show, setShow = () => { } }
   }
   return (
     <div>
-      <ModalComponent show={show} setShow={setShow}>
         <Header heading={STRINGS?.VERIFY_EMAIL} />
 
         {statusSuccessMessage?<label className='statusSuccessMessage'>{statusSuccessMessage?.data}</label>:<label className='validationMessage'>{statusFailedMessage?.data}</label>}
         <ContinueButton ButtonText={"Send Verify link"} handleSubmit={handleSubmit} />
-      </ModalComponent>
+
     </div>
   )
 }

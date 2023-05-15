@@ -75,7 +75,7 @@ const failedSend=(res)=>{
                     <input
                       type="text"
                       placeholder="OTP"
-                      className="form-control my-2"
+                      className="otp-input form-control my-2"
                       value={otp}
                       onChange={(e) => handleOtp(e)}
                       required
@@ -83,7 +83,7 @@ const failedSend=(res)=>{
                     {errors.otp && <p className="err">{errors?.otp}</p>}
                   </div>
                 </form>
-                <div className="d-sm-grid gap-1 d-flex">
+                <div className="cnt-btn d-sm-grid gap-1 d-flex">
                   <button
                     className="btn btn-dark text-white m-2  round rounded-4 "
                     onClick={handleClick}

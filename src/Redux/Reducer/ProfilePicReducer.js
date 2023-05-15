@@ -7,7 +7,6 @@ export const profilePicReducer = (state = "", action) => {
         case ACTION_STATES.SAVE_PROFILE_PIC:
         // console.log(action.payload,"profilePicReducer");
             return (
-
                 state=action?.payload
             )
             

@@ -16,8 +16,6 @@ const successImageUpload=()=>{
       formData.append("profile", image);
     dispatch(uploadProfilePic(formData,successImageUpload))
 
-     
-     
     }
   return (
     <div>

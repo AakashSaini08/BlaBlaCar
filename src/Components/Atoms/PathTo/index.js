@@ -6,7 +6,7 @@ export default function PathTo({picNeeded=true,linkText="" ,setShow=()=>{}}) {
   return (
     <div>
 
-    <div className="publishRideLink"  onClick={()=>{setShow(true)}}>
+    <div className="publishRideLink"  onClick={()=>{setShow(false)}}>
       {picNeeded&& <img className="publishRideImg" src={Images?.additionIcon} alt =""></img>}
         <div className="publishRideText">{linkText}</div>
         </div>
