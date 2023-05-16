@@ -1,17 +1,16 @@
-import { useState } from "react";
-import {useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { confirmemailotp } from "../../Redux/Actions";
-import { STRINGS, VALIDATION_MESSAGES } from "../../Shared/Constants";
-import { isValidOtp } from "../../Shared/Utilities";
-import Header from "../../Components/Atoms/Header";
-import CustomInput from "../../Components/Atoms/CustomInput";
-import ContinueButton from "../../Components/Atoms/ContinueButton";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import ContinueButton from '../../Components/Atoms/ContinueButton'
+import CustomInput from '../../Components/Atoms/CustomInput'
+import Header from '../../Components/Atoms/Header'
+import { confirmPhone} from '../../Redux/Actions'
+import { STRINGS, VALIDATION_MESSAGES } from '../../Shared/Constants'
+import { isValidOtp} from '../../Shared/Utilities'
 
+function PhoneOtp() {
 
-
-const EmailOtp = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const [otp, setOtp] = useState("");
   const [validationMessage, setValidationMessage] = useState();
   const navigate = useNavigate();
@@ -29,10 +28,9 @@ const EmailOtp = () => {
     } else if (!isValidOtp.test(otp, successSend, failedSend)) {
       setValidationMessage(VALIDATION_MESSAGES?.OTP?.NOT_VALID);
     } else {
-      dispatch(confirmemailotp (otp, successSend, failedSend));
+      dispatch(confirmPhone (otp, successSend, failedSend));
     }
   };
-
   return (
     <>
       <Header heading={STRINGS?.OTP_SMS} />
@@ -49,7 +47,7 @@ const EmailOtp = () => {
       </div>
       <ContinueButton handleSubmit={handleSubmit} />
     </>
-  );
-};
+  )
+}
 
-export default EmailOtp;
+export default PhoneOtp

@@ -57,6 +57,25 @@ export const checkemail = (payload,successLogin,failedLogin) => {
   };
 };
 
+export const phoneno = (payload,successSend,failedSend) => {
+  // console.log(payload,"aaaaaaaaa")
+  return {
+    type: ACTION_STATES.PHONE_NUMBER,
+    payload,
+    successSend,
+    failedSend
+  };
+};
+
+export const confirmPhone = (payload,successSend,failedSend) => {
+  console.log(payload,"aaaaaaaaa")
+  return {
+    type: ACTION_STATES.CONFIRM_PHONE,
+    payload,
+    successSend,
+    failedSend
+  };
+};
 
 export const loginData = {
   signin: (payload, successLogin, failedLogin) => {
@@ -213,7 +232,17 @@ export const changePassword = (payload, successPsw, failedPsw) => {
     }
   }
 
-
+  export const myPancard = (payload, successSend, failedSend) => {
+    console.log(payload,"Send confirm action")
+      return {
+        type: ACTION_STATES.PANCARD,
+        payload,
+        successSend,
+        failedSend
+      }
+    }
+  
+  
 
 
 

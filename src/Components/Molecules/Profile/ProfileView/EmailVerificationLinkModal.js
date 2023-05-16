@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ModalComponent from '../../../Cells/Modal'
 import Header from '../../../Atoms/Header'
 import { STRINGS } from '../../../../Shared/Constants'
 import ContinueButton from '../../../Atoms/ContinueButton'
@@ -14,7 +13,7 @@ export default function EmailVerificationLinkModal({ show, setShow = () => { } }
   const [statusSuccessMessage,setStatusSuccessMessage]=useState()
   const [statusFailedMessage,setStatusFailedMessage]=useState()
   const succesSend=(res)=>{
-    navigate("/otp")
+    navigate("/emailotp")
     setStatusSuccessMessage(res)
   }
   const failedSend=(res)=>{

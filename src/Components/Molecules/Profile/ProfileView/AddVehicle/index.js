@@ -4,8 +4,8 @@ import { REGEX, STRINGS, VALIDATION_MESSAGES } from '../../../../../Shared/Const
 import CustomInput from '../../../../Atoms/CustomInput'
 import ContinueButton from '../../../../Atoms/ContinueButton'
 import ValidationText from '../../../../Atoms/ValidationText'
-import { isValidName, isValidNumber, isValidNumberAndText } from '../../../../../Shared/Utilities'
-import { useDispatch } from 'react-redux'
+// import { isValidName, isValidNumber, isValidNumberAndText } from '../../../../../Shared/Utilities'
+import { useDispatch, useSelector } from 'react-redux'
 import { addVehicleData } from '../../../../../Redux/Actions'
 import { useNavigate } from 'react-router-dom'
 
@@ -24,6 +24,9 @@ export default function AddVehicleDetails() {
   const [vehicleColorValidationMessage, setVehicleColorValidationMessage] = useState()
   const [vehicleModelYear, setVehicleModelYear] = useState("")
   const [vehicleModelYearValidationMessage, setVehicleModelYearValidationMessage] = useState()
+
+  
+
   const dispatch=useDispatch()
   const navigate=useNavigate()
 const navigateToProfile=(res)=>{
@@ -54,7 +57,7 @@ const navigateToProfile=(res)=>{
    }
   else{
 
-    dispatch(addVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear},navigateToProfile))
+    dispatch(addVehicleData({country:country,vehicle_no:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear},navigateToProfile))
    
   }
 }

@@ -4,8 +4,15 @@
     padding: 12px ;
     font-size: 18px;
     font-weight: 500;
+    margin-bottom: -5px;
 }
 
 .profileMain{
     font-size: 18px;
+}
+.confirm{
+    margin: 5px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 8px;
 }

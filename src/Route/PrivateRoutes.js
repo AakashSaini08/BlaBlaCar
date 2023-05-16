@@ -1,11 +1,15 @@
 import AddOrEditProfilePic from "../Components/Cells/AddOrEditProfilePic";
-// import PasswordInput from "../Components/Cells/PasswordInput";
 import Profile from "../Components/Molecules/Profile";
 import AddingMiniBio from "../Components/Molecules/Profile/ProfileView/AddingMiniBio";
+import AddVehicleDetails from "../Components/Molecules/Profile/ProfileView/AddVehicle";
 import EditPersonalDetails from "../Components/Molecules/Profile/ProfileView/EditPersonalDetails";
 import EmailVerificationLinkModal from "../Components/Molecules/Profile/ProfileView/EmailVerificationLinkModal";
 import ChangePassword from "../View/ChangePassword";
-import Otp from "../View/OTP";
+import GovtId from "../View/GovtId.js";
+import EmailOtp from "../View/OTP";
+import Phone from "../View/Phone";
+import PhoneOtp from "../View/PhoneOtp";
+
 
 
 export const PRIVATE_ROUTES = [
@@ -18,8 +22,8 @@ export const PRIVATE_ROUTES = [
     component:<AddOrEditProfilePic/>,    
   },
   {
-    path: "/otp",
-    component:<Otp/>,    
+    path: "/emailotp",
+    component:<EmailOtp/>,    
   },
   {
     path: "/addingMiniBio",
@@ -37,5 +41,20 @@ export const PRIVATE_ROUTES = [
     path: "/emailVerification",
     component:<EmailVerificationLinkModal/>,    
   },
-  
+  {
+    path: "/phonenumber",
+    component:<Phone/>,    
+  },
+  {
+    path: "/phoneotp",
+    component:<PhoneOtp/>,    
+  },
+  {
+    path: "/govtid",
+    component:<GovtId/>,    
+  },
+  {
+    path: "/vehicle",
+    component:<AddVehicleDetails/>,    
+  },
 ];

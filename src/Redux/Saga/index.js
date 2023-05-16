@@ -250,16 +250,20 @@ function* updateBioData(payload) {
 
 function* addVehicle(payload) {
   try {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: token },
-    };
+    console.log(payload, "$$$$$$$$$$$$$$$");
+    const formData = new FormData();
+    formData.append("country", payload.payload.country);
+    formData.append("vehicle_no", payload.payload.vehicle_no);
+    formData.append("vehicle_brand", payload.payload.vehicle_brand);
+    formData.append("vehicle_name", payload.payload.vehicle_name);
+    formData.append("vehicle_type", payload.payload.vehicle_type);
+    formData.append("vehicle_color", payload.payload.vehicle_color);
+    formData.append("vehicle_model_year", payload.payload.vehicle_model_year);
+
     yield put(settingLoaderState(true));
-    const res = yield axios.post(
-      BASE_URL + URL_EXTENSIONS.VEHICLE,
-      { vehicle: payload?.payload },
-      config
-    );
+    const res = yield axiosInstance.post(BASE_URL + URL_EXTENSIONS.VEHICLE,
+      formData
+      );
     payload.navigateToProfile(res);
     // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
     yield put(settingLoaderState(false));
@@ -271,12 +275,8 @@ function* addVehicle(payload) {
 
 function* getVehicle() {
   try {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: token },
-    };
     yield put(settingLoaderState(true));
-    const res = yield axios.get(BASE_URL + URL_EXTENSIONS.VEHICLE, config);
+    const res = yield axiosInstance.get(BASE_URL + URL_EXTENSIONS.VEHICLE);
     console.log(res?.data, "res in saga");
     yield put(setVehicleData(res?.data));
     yield put(settingLoaderState(false));
@@ -350,6 +350,74 @@ function* updatePassword(payload) {
   }
 }
 
+function* updatePhone(payload) {
+  const formData = new FormData();
+  console.log(payload.payload, "saga phone");
+  formData.append("phoneno", payload.payload);
+  try {
+    // console.log(payload.payload.bio,"sssssss")
+    yield put(settingLoaderState(true));
+    const res = yield axiosInstance.post(
+      BASE_URL + URL_EXTENSIONS.PHONE_NUMBER,
+      formData
+    );
+    payload.successSend(res);
+
+    // console.log(res?.data?.status?.data, "bioUpdated");
+    // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    payload.failedSend(error?.response?.data);
+    // console.log(error, "errorInLogin");
+  }
+}
+
+function* confirmPhone(payload) {
+  const formData = new FormData();
+  console.log(payload.payload, "saga phone");
+  formData.append("otp", payload.payload);
+  try {
+    // console.log(payload.payload.bio,"sssssss")
+    yield put(settingLoaderState(true));
+    const res = yield axiosInstance.post(
+      BASE_URL + URL_EXTENSIONS.CONFIRM_PHONE,
+      formData
+    );
+    payload.successSend(res);
+
+    // console.log(res?.data?.status?.data, "bioUpdated");
+    // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    payload.failedSend(error?.response?.data);
+    // console.log(error, "errorInLogin");
+  }
+}
+
+function* checkPancard(payload) {
+  const formData = new FormData();
+  console.log(payload.payload, "saga phone");
+  formData.append("pancard", payload.payload);
+  try {
+    // console.log(payload.payload.bio,"sssssss")
+    yield put(settingLoaderState(true));
+    const res = yield axiosInstance.put(
+      BASE_URL + URL_EXTENSIONS.PANCARD,
+      formData
+    );
+    payload.successSend(res);
+
+    // console.log(res?.data?.status?.data, "bioUpdated");
+    // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    payload.failedSend(error?.response?.data);
+    // console.log(error, "errorInLogin");
+  }
+}
 function* Saga() {
   yield all([
     takeLatest(ACTION_STATES.LOGOUT, logoutnow),
@@ -375,6 +443,9 @@ function* Saga() {
     takeLatest(ACTION_STATES.DELETE_VEHICLE, deleteVehicleData),
     takeLatest(ACTION_STATES.UPDATE_VEHICLE, updateVehicleDetails),
     takeLatest(ACTION_STATES.CHANGE_PASSWORD, updatePassword),
+    takeLatest(ACTION_STATES.PHONE_NUMBER, updatePhone),
+    takeLatest(ACTION_STATES.CONFIRM_PHONE, confirmPhone),
+    takeLatest(ACTION_STATES.PANCARD, checkPancard),
   ]);
 }
 export default Saga;

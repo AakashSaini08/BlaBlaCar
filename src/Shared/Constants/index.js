@@ -21,7 +21,9 @@ export const STRINGS={
     ADD_STOP:"Add stopovers to get more passengers",
     WHEN_GOING:"When are you going?",
     ON_WHAT_TIME:"At what time will you pick passengers up?",
-    CHANGE_PASSWORD:"Change password"
+    CHANGE_PASSWORD:"Change password",
+    OTP_SMS:"Enter the code we've just sent you by SMS",
+    PANCARD_DETAILS:"Enter your PAN Card number"
 }
 
 
@@ -30,7 +32,10 @@ export const REGEX={
     name: "[a-zA-Z][a-zA-Z]+",
     password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})",
     numberAndText:"/^[a-zA-Z0-9]+$/",
-    numer:"/^[0-9]+$/"
+    numer:"/^[0-9]+$/",
+    phone:"^[0-9]{10}$",
+    otp:"^[0-9]{4}$",
+    pancard:"[A-Z]{5}[0-9]{4}[A-Z]{1}",
 }
 
 export const VALIDATION_MESSAGES={
@@ -101,7 +106,18 @@ export const VALIDATION_MESSAGES={
         EMPTY:"*Time Required",
       
     },
-
+    PHONE:{
+        NOT_VALID:"Enter Valid Phone number",   
+        EMPTY:"*Phone number Required",
+    },
+    OTP:{
+        NOT_VALID:"Enter Valid OTP",   
+        EMPTY:"*OTP Required",
+    },
+    PANCARD:{
+        NOT_VALID:"Enter Valid PAN card number",   
+        EMPTY:"*PAN card number Required",
+    },
 }
 
 
