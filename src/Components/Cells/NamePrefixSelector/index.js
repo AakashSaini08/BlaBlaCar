@@ -19,7 +19,7 @@ export default function NamePrefixSelector() {
     return (
         <div className='section-content'>
         <Header heading={STRINGS?.GENDER_SELECT_HEADING}/>
-        {namePrefixes.map((val,i)=><CustomLinkListCreator linkText={val} handleSelect={handleSelect}/>)}
+        {namePrefixes.map((val,i)=><CustomLinkListCreator key={i} linkText={val} handleSelect={handleSelect}/>)}
         </div>
     )
 }

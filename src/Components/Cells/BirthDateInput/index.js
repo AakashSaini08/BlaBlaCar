@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 
 export default function BirthDateInput() {
   const dispatch=useDispatch()
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
   const navigate = useNavigate()
   const handleSubmit = () => {
     dispatch(registerData?.date(startDate.toISOString().slice(0, 10)))

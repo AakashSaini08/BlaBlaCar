@@ -16,6 +16,7 @@ export default function EmailInput() {
 
   const successLogin = () => {
     navigate("/username");
+    
   };
   const failedLogin = (res) => {
     setValidationMessage(res.msg);

@@ -4,6 +4,13 @@ import "./styles.css"
 import "react-datepicker/dist/react-datepicker.css";    
 
 
+const getLegalDate = () => {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear()
+  const newYear = year - 18;
+  currentDate.setFullYear(newYear)
+  return currentDate
+}
 
 const DateInput = ({validationMessage="" ,startDate,setStartDate=()=>{},minDate,setValidationMessageDOB=()=>{}}) => {
  
@@ -13,13 +20,17 @@ const DateInput = ({validationMessage="" ,startDate,setStartDate=()=>{},minDate,
     <div className="singup-date-picker-wrapper">
     <DatePicker 
     showIcon
-    placeholderText="Select a weekday"
+    placeholderText="Set your DOB"
     className="singup-date-picker"
-    selected={startDate} onChange={(date) => {setStartDate(date)
+    selected={startDate}
+     onChange={(date) => {setStartDate(date)
       setValidationMessageDOB("")}
     } 
-     minDate={minDate?minDate:'01-01-1960'}
-     maxDate={!minDate?new Date():new Date().setMonth(new Date().getMonth() + 2)}/>
+     maxDate={getLegalDate()}
+    //  maxDate={!minDate?new Date():new Date().setMonth(new Date().getMonth() + 2)}
+
+
+     />
     </div>
         <br />
     </div>

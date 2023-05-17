@@ -12,6 +12,9 @@ import closeEye from "../../assets/closeEye.png"
 import openEye from "../../assets/openEye.png"
 import scamAlert from "../../assets/scamDetective-653544b71d88f51797db..svg"
 import driver from "../../assets/driver.svg"
+import bio from "../../assets/bio.svg"
+import verified from "../../assets/verified.svg"
+
 
 export  const Images={
     rightArrow,
@@ -28,5 +31,7 @@ export  const Images={
     closeEye,
     scamAlert,
     driver,
+    bio,
+    verified
 }
 

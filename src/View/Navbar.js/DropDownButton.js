@@ -33,7 +33,7 @@ export default function NavContent({
           {token ? (
             <img
               className="profileImg"
-              src={BASE_URL + profilePic}
+              src={profilePic===null ? Images.profile :BASE_URL + profilePic}
               alt=""
             ></img>
           ) : (

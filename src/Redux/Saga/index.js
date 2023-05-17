@@ -7,6 +7,7 @@ import {
   savingProfilePic,
   setVehicleData,
   settingLoaderState,
+  setBankDetails,
 } from "../Actions";
 import { axiosInstance } from "../../Shared/Request/Request";
 
@@ -137,13 +138,7 @@ function* sendResetPassword(payload) {
 }
 
 function* uploadingPic(payload) {
-  // console.log(payload,"{{{{{}}}}}")
   try {
-    // const token = localStorage.getItem("token");
-    // const config = {
-    //   headers: { Authorization: token },
-    // };
-    // console.log(payload?.payload, "imageinsaga");
     yield put(settingLoaderState(true));
     yield axiosInstance.post(
       BASE_URL + URL_EXTENSIONS.PROFILE_PIC,
@@ -189,7 +184,7 @@ function* updateProfileData(payload) {
     yield put(settingLoaderState(false));
   } catch (error) {
     yield put(settingLoaderState(false));
-    console.log(error, "errorInLogin");
+    // console.log(error, "errorInLogin");
   }
 }
 function* sendingEmailVerificationLink(payload) {
@@ -261,9 +256,10 @@ function* addVehicle(payload) {
     formData.append("vehicle_model_year", payload.payload.vehicle_model_year);
 
     yield put(settingLoaderState(true));
-    const res = yield axiosInstance.post(BASE_URL + URL_EXTENSIONS.VEHICLE,
+    const res = yield axiosInstance.post(
+      BASE_URL + URL_EXTENSIONS.VEHICLE,
       formData
-      );
+    );
     payload.navigateToProfile(res);
     // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
     yield put(settingLoaderState(false));
@@ -418,6 +414,62 @@ function* checkPancard(payload) {
     // console.log(error, "errorInLogin");
   }
 }
+
+function* updateBankDetails(payload) {
+  const formData = new FormData();
+  console.log(payload.payload, "saga bank");
+  formData.append("account_holder", payload?.payload?.account_holder);
+  formData.append("account_no", payload?.payload?.account_no);
+  formData.append("ifsccode", payload?.payload?.ifsccode);
+
+  try {
+    // console.log(payload.payload.bio,"sssssss")
+    yield put(settingLoaderState(true));
+    const res = yield axiosInstance.put(
+      BASE_URL + URL_EXTENSIONS.BANK_DETAILS,
+      formData
+    );
+    payload.successSend(res);
+
+    // console.log(res?.data?.status?.data, "bioUpdated");
+    // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    payload.failedSend(error?.response?.data);
+    // console.log(error, "errorInLogin");
+  }
+}
+
+function* gettingBankDetails(payload) {
+  try {
+    // console.log(payload.payload.bio,"sssssss")
+    yield put(settingLoaderState(true));
+    const res = yield axiosInstance.get(BASE_URL + URL_EXTENSIONS.BANK_DETAILS);
+    yield put(setBankDetails(res?.data));
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    payload.failedSend(error?.response?.data);
+    // console.log(error, "errorInLogin");
+  }
+}
+
+function* deleteMyAccount(payload) {
+  try {
+    const id = payload.payload.id;
+    yield put(settingLoaderState(true));
+    const res= yield axiosInstance.delete(
+      BASE_URL + URL_EXTENSIONS.USER_PROFILE + id + "/"
+    );
+    payload.successSend(res);
+    yield put(settingLoaderState(false));
+  } catch (error) {
+    yield put(settingLoaderState(false));
+    // console.log(error, "errorInLogin");
+  }
+}
+
 function* Saga() {
   yield all([
     takeLatest(ACTION_STATES.LOGOUT, logoutnow),
@@ -446,6 +498,9 @@ function* Saga() {
     takeLatest(ACTION_STATES.PHONE_NUMBER, updatePhone),
     takeLatest(ACTION_STATES.CONFIRM_PHONE, confirmPhone),
     takeLatest(ACTION_STATES.PANCARD, checkPancard),
+    takeLatest(ACTION_STATES.BANK_DETAILS, updateBankDetails),
+    takeLatest(ACTION_STATES.GET_BANK_DETAILS, gettingBankDetails),
+    takeLatest(ACTION_STATES.DELETE_ACCOUNT, deleteMyAccount),
   ]);
 }
 export default Saga;

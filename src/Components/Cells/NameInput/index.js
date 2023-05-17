@@ -43,9 +43,9 @@ export default function NameInput() {
     <>
     <Header heading={STRINGS?.NAME_HEADING} />
   <div className='section'>
-      <CustomInput state={firstName} setState={setFirstName} placeHolder="firstName" validationMessage={validationMessageFirstName} setValidationMessage={setValidationMessageFirstName} handleSubmit={handleSubmit} inputType={"firstName"}/>
+      <CustomInput state={firstName} setState={setFirstName} placeHolder="First Name" validationMessage={validationMessageFirstName} setValidationMessage={setValidationMessageFirstName} handleSubmit={handleSubmit} inputType={"firstName"}/>
       <label className='validationMessage'>{validationMessageFirstName}</label>
-      <CustomInput state={lastName} setState={setLastName} placeHolder="lastName" validationMessage={validationMessageLastName} setValidationMessage={setValidationMessageLastName} handleSubmit={handleSubmit} inputType={"lastName"}/>
+      <CustomInput state={lastName} setState={setLastName} placeHolder="Last Name" validationMessage={validationMessageLastName} setValidationMessage={setValidationMessageLastName} handleSubmit={handleSubmit} inputType={"lastName"}/>
       <label className='validationMessage'>{validationMessageLastName}</label>
   </div>
   <ContinueButton handleSubmit={handleSubmit} />

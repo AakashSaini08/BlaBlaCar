@@ -11,16 +11,15 @@ import {
   //   addingBio,
 } from "../../../../Redux/Actions";
 import { BASE_URL } from "../../../../Services/Api/Constants";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Images } from "../../../../Shared/Images";
 
-export default function NameAndProfilePicView({
-  setShowEditPersonalDetails = () => {},
-  setShowMiniBio = () => {},
-  setShowEmailVerificationModal,
-}) {
+export default function NameAndProfilePicView() {
   const userData = JSON.parse(localStorage.getItem("CurrentUser"));
   const email = JSON.parse(localStorage.getItem("email"));
-  const StoreData = useSelector((state) => state);
+  const storeData = useSelector((state)=>state)
+
+  const picStatus = useSelector((state) => state?.profilePicReducer?.profile);
   const emailStatus = useSelector(
     (state) => state?.profilePicReducer?.details?.is_verified
   );
@@ -38,16 +37,18 @@ export default function NameAndProfilePicView({
     (state) => state?.profilePicReducer?.pancarddeatils?.is_verified
   );
 
-  // console.log(pancard,pancardStatus,"{{{{{{}}}}}")
+  console.log(storeData,"{{{{{{}}}}}")
   const vehicleData = useSelector((state) => state?.vehicleDataReducer?.data);
-  console.log(vehicleData, "<<<<<<<<<<>>>>>>>>>>");
+  // console.log(vehicleData, "<<<<<<<<<<>>>>>>>>>>");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(gettingProfilePic());
     dispatch(getVehicleData({}));
   }, [dispatch]);
-
-  const handleSelect = () => {};
+  const navigate = useNavigate();
+  const handleSelect = () => {
+    navigate("/currentUser")
+  };
   return (
     <div className="profile">
       <div className="profileMain">
@@ -56,7 +57,7 @@ export default function NameAndProfilePicView({
           profileViewLink={true}
           linkText={userData?.first_name}
           handleSelect={handleSelect}
-          profilePic={BASE_URL + StoreData?.profilePicReducer?.profile}
+          profilePic={picStatus ? BASE_URL + picStatus : Images.profile}
         />
         <Linkto linkText="Add profile picture" route="/picture" />
         <Link className="personal-detail-link" to="/editPersonalDetails">
@@ -65,7 +66,7 @@ export default function NameAndProfilePicView({
       </div>
       <div className="profileMain">
         <h1 className="headingData">Verify Your Profile</h1>
-        {!pancardStatus ? (
+        {pancardStatus === "False" ? (
           <Linkto linkText="Verify your Govt. ID" route="/govtid" />
         ) : (
           <p className="confirm">Pancard : {pancard}</p>
@@ -77,7 +78,7 @@ export default function NameAndProfilePicView({
         ) : (
           <p className="confirm"> Email : {email}</p>
         )}
-        {!phoneStatus ? (
+        {phoneStatus === "False" ? (
           <Linkto linkText="Confirm Phone number" route="/phonenumber" />
         ) : (
           <p className="confirm">Phone no : {phone}</p>
@@ -92,9 +93,9 @@ export default function NameAndProfilePicView({
       <div className="profileMain">
         <h1 className="headingData">Vehicles</h1>
 
-        {vehicleData?.map((val) => (
-          <div>
-            {console.log(val, "((((((((((())))))))))0")}
+        {vehicleData?.map((val, i) => (
+          <div key={i}>
+            {/* {console.log(val, "((((((((((())))))))))0")} */}
             <CustomLinkListCreator
               linkText={`VehicleName : ${val?.vehicle_name}  
                         VehicleColor :${val?.vehicle_color}`}

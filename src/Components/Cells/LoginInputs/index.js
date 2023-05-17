@@ -53,7 +53,7 @@ export default function LoginInputs() {
             <div className='section'>
                 <CustomInput state={email} setState={setEmail}  placeHolder="email" validationMessage={validationMessageEmail} setValidationMessage={setValidationMessageEmail} handleSubmit={handleSubmit} />
                 <label className='validationMessage'>{validationMessageEmail}</label>
-                <CustomInput type={inputType} showEyePicture={true} state={password}       inputType={inputType} setInputType={setInputType} setState={setPassword} placeHolder="password" validationMessage={validationMessagePassword} setValidationMessage={setValidationMessagePassword} handleSubmit={handleSubmit} />
+                <CustomInput type={inputType} showEyePicture={true} state={password} inputType={inputType} setInputType={setInputType} setState={setPassword} placeHolder="password" validationMessage={validationMessagePassword} setValidationMessage={setValidationMessagePassword} handleSubmit={handleSubmit} />
                 
                 <label className='validationMessage'>{validationMessagePassword}</label>
             </div>

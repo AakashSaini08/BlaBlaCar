@@ -1,31 +1,35 @@
-.profile-section{
+.profile-section {
     max-width: 1016px;
     margin-left: auto;
     margin-right: auto;
 }
-.profileWrapper{
-      display: flex;
+
+.profileWrapper {
+    display: flex;
     justify-content: center;
-    box-shadow: 0px 17px 17px -19px rgba(0,0,0);
+    box-shadow: 0px 17px 17px -19px rgba(0, 0, 0);
 }
 
-.profileContainer{
-    width:90%;
+.profileContainer {
+    width: 90%;
 }
-.profileHeading{
+
+.profileHeading {
     display: flex;
     margin: 0px auto;
     overflow: auto;
     width: 100%;
     height: 100%;
 }
-.profileHeadingData{
+
+.profileHeadingData {
     -webkit-box-flex: 1;
     flex: 1 1 0px;
     position: relative;
 }
-.profileHeadingButton{
-  
+
+.profileHeadingButton {
+
     color: rgb(5, 71, 82);
     cursor: auto;
     width: 100%;
@@ -38,10 +42,11 @@
     padding: 8px 8px 12px;
     background: none rgb(255, 255, 255);
     border: none;
-     
+
 }
-.profileHeadingButtonSelected{
-  
+
+.profileHeadingButtonSelected {
+
     color: rgb(5, 71, 82);
     cursor: auto;
     width: 100%;
@@ -56,11 +61,13 @@
     background: none rgb(255, 255, 255);
     border-bottom: solid;
     border-width: 2px;
-    border-color:  rgb(5, 71, 82);;
-   
-   
+    border-color: rgb(5, 71, 82);
+    ;
+
+
 }
-.profileHeadingSpan{
+
+.profileHeadingSpan {
     font-size: 16px;
     line-height: 20px;
     font-weight: 800;
@@ -68,52 +75,223 @@
     width: auto;
 }
 
-.profileBody{
+.profileBody {
     display: flex;
     justify-content: center;
 }
-.profileContent{
-    width:65%
+
+.profileContent {
+    width: 65%
 }
-.profileMain{
+
+.profileMain {
     display: flex;
     flex-direction: column;
     justify-content: start;
     padding: 10px;
-    border-bottom:solid;
+    border-bottom: solid;
     border-width: 1px;
-    border-color:lightgray;
+    border-color: lightgray;
     text-align: left;
 }
-.headingData{
+
+.headingData {
 
     color: rgb(5, 70, 82);
- 
+
     font-size: 20px;
-    width:100%
+    width: 100%
 }
-.FillingMessageDiv{
+
+.FillingMessageDiv {
     display: flex;
     flex-direction: column;
     padding: 16px 24px;
     word-break: break-word;
-    width:75%;
+    width: 75%;
     text-align: left;
 }
-.FillingMessage{
+
+.FillingMessage {
     font: 400 16px / 20px gt-eesti, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgb(40, 91, 100);
 }
-.formInputs{
-width:100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-margin-left: 10%;
+
+.formInputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10%;
 
 }
 
-.miniBioInput{
-    width :60%;
-    height:50%
+.miniBioInput {
+    width: 60%;
+    height: 50%
+}
+
+.emailView {
+    display: flex;
+}
+
+.verified {
+    margin-top: 17px;
+    color: green;
+    font-weight: bolder;
+}
+
+.notverified {
+    margin-top: 17px;
+    color: red;
+    font-weight: bolder;
+}
+
+.statusSuccessMessage {
+    color: green
+}
+
+.small-input {
+    -moz-appearance: textfield;
+}
+
+.small-input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.small-input::-webkit-outer-spin-button,
+.small-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+.deleteAccount {
+    background-color: rgba(5, 71, 82, 0.95);
+    ;
+    height: 100vh;
+    display: block;
+    margin-top: -40px;
+}
+
+.cancleDelete {
+    height: 30px;
+    width: 29px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    background-color: rgba(248, 250, 250, 0.95);
+    border-radius: 50px;
+    margin-left: 30%
+}
+
+.deleteAccountButtons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 30%;
+}
+
+.userDetails {
+    margin-top:20%;
+    font:  "gt-eesti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+}
+
+.firstName {
+    color: #054752;
+    font-size: 200%;
+    font-weight: bold;
+
+}
+
+.profilePicView {
+    height: 90px;
+    width: 90px;
+    margin-top: -10px
+}
+
+.userDataDisplay {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid;
+    border-width: thin;
+    border-color: lightgrey;
+}
+
+.columnOne {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10%;
+}
+
+.columnTwo {
+    text-align: right;
+}
+
+.age {
+    color: hsla(189, 13%, 50%, 1)
+}
+
+.profilePicData {
+    height: 110%;
+    width: 110%;
+    border-radius: 50%;
+}
+
+.userBio {
+    color: #054752;
+    font-size: 146%;
+    font-weight: bold;
+    padding: 2%;
+    margin-left: 22px;
+}
+
+.userBioData {
+    color: hsla(189, 13%, 50%, 1);
+    font-size: 120%;
+
+    padding-left: 5%;
+    display: flex;
+    gap:20px
+
+}
+
+.userBioDisplay {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    margin-left: -20px;
+}
+
+.bioPic {
+    height: 30px;
+    width: 30px;
+}
+.borderPanel{
+    margin-top:3%;
+    margin-bottom:3%;
+    width:100%;
+    background-color: rgb(231, 229, 229);
+    height: 10px;
+    border-radius: 5px;
+}
+.bio{
+    margin-left:-3.5%;
+    margin-top: 3%;
+}
+
+.confirm{
+    padding: 16px 30px;
+    text-align: left;
+    
+}
+
+
+.verified-logo{
+    width: 30px;
+    height: 26px;
 }

@@ -10,8 +10,8 @@ const GuestRoutes = () => {
   const routes = PUBLIC_ROUTES.concat(AUTH_ROUTES);
   return (
     <Routes>
-      {routes.map((route) => (
-        <Route path={route.path} element={route.component} />
+      {routes.map((route,i) => (
+        <Route key={i} path={route.path} element={route.component} />
       ))}
     </Routes>
   );
@@ -21,8 +21,8 @@ const AuthenticatedRoutes = () => {
   const routes = PUBLIC_ROUTES.concat(PRIVATE_ROUTES);
   return (
     <Routes>
-      {routes.map((route) => (
-        <Route path={route.path} element={route.component} />
+      {routes.map((route,i) => (
+        <Route key ={i} path={route.path} element={route.component} />
       ))}
     </Routes>
   );

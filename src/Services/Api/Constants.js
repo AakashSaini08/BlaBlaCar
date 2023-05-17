@@ -16,4 +16,5 @@ export const URL_EXTENSIONS={
     PHONE_NUMBER:"phoneno/",
     CONFIRM_PHONE:"confirmphone/",
     PANCARD:"pancard/",
+    BANK_DETAILS:"bankdetails/"
 }

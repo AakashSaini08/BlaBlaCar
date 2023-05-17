@@ -1,7 +1,9 @@
 import AddOrEditProfilePic from "../Components/Cells/AddOrEditProfilePic";
 import Profile from "../Components/Molecules/Profile";
+import BankDetails from "../Components/Molecules/Profile/AccountView/BankDetails";
 import AddingMiniBio from "../Components/Molecules/Profile/ProfileView/AddingMiniBio";
 import AddVehicleDetails from "../Components/Molecules/Profile/ProfileView/AddVehicle";
+import DetailsOfCurrentUsers from "../Components/Molecules/Profile/ProfileView/DetailsOfCurrentUsers";
 import EditPersonalDetails from "../Components/Molecules/Profile/ProfileView/EditPersonalDetails";
 import EmailVerificationLinkModal from "../Components/Molecules/Profile/ProfileView/EmailVerificationLinkModal";
 import ChangePassword from "../View/ChangePassword";
@@ -57,4 +59,15 @@ export const PRIVATE_ROUTES = [
     path: "/vehicle",
     component:<AddVehicleDetails/>,    
   },
+  {
+    path: "/bankdetails",
+    component:<BankDetails/>,    
+  },
+  {
+    path: "/currentUser",
+    component:<DetailsOfCurrentUsers/>,    
+  },
 ];
+
+
+

@@ -8,4 +8,8 @@ export const isValidNumberAndText = new RegExp(REGEX?.numberAndText);
 export const isValidPhone = new RegExp(REGEX?.phone);
 export const isValidOtp = new RegExp(REGEX?.otp);
 export const isValidPancard = new RegExp(REGEX?.pancard);
+export const isValidAccountHolder = new RegExp(REGEX?.accountHolder);
+export const isValidAccountNumber = new RegExp(REGEX?.accountNumber);
+export const isValidIfscCode = new RegExp(REGEX?.ifsccode);
+
 

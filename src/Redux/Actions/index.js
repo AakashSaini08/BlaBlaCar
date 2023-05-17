@@ -242,8 +242,36 @@ export const changePassword = (payload, successPsw, failedPsw) => {
       }
     }
   
+
+    export const bankDetails = (payload, successSend, failedSend) => {
+      console.log(payload,"bank action")
+        return {
+          type: ACTION_STATES.BANK_DETAILS,
+          payload,
+          successSend,
+          failedSend
+        }
+      }
+    
+      export const getBankDetails = () => {
+          return {
+            type: ACTION_STATES.GET_BANK_DETAILS,
+
+          }
+        }
   
+        export const setBankDetails = (payload) => {
+          return {
+            type: ACTION_STATES.SET_BANK_DETAILS,
+            payload
+          }
+        }
 
-
-
-
+        export const deleteAccount = (payload,successSend) => {
+          console.log(payload.id,"{{{{{}}}}}}}")
+          return {
+            type: ACTION_STATES.DELETE_ACCOUNT,
+            payload,
+            successSend
+          };
+        };

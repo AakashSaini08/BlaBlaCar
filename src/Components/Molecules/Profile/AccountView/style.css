@@ -1,12 +1,29 @@
 .psw-div{
     margin-left: 10px;
     text-align: left;
-    margin-top: 45px;
-    border-bottom: 2px solid #045652;;
+    /* margin-top: 45px; */
+    padding: 20px 0px;
+    border-bottom: 1px solid #045652;
 }
 
 .psw-link{
     text-decoration: none;
     font-size: 25px;
     color: #054652;
+}
+.logout-div{
+    /* justify-content: left; */
+    text-align: left;
+    margin-left: 8px;
+    padding: 20px 0px;
+    border-bottom: 1px solid #045652;
+
+}
+.logout-btn{
+    border: none;
+    background: transparent;
+    color: #00AFF5;
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
 }

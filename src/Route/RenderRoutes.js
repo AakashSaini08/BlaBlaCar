@@ -9,8 +9,8 @@ const RenderRoutes = ({
   ],
 }) => (
   <>
-    {routes.map((route) => (
-      <Route path={route.path}  element={route.component}  />
+    {routes.map((route,i) => (
+      <Route key={i} path={route.path}  element={route.component}  />
     ))}
   </>
 );

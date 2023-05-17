@@ -23,7 +23,8 @@ export const STRINGS={
     ON_WHAT_TIME:"At what time will you pick passengers up?",
     CHANGE_PASSWORD:"Change password",
     OTP_SMS:"Enter the code we've just sent you by SMS",
-    PANCARD_DETAILS:"Enter your PAN Card number"
+    PANCARD_DETAILS:"Enter your PAN Card number",
+    BANK_DETAILS:"Your bank account details"
 }
 
 
@@ -36,6 +37,9 @@ export const REGEX={
     phone:"^[0-9]{10}$",
     otp:"^[0-9]{4}$",
     pancard:"[A-Z]{5}[0-9]{4}[A-Z]{1}",
+    accountNumber:"^[0-9]{9,18}$",
+    accountHolder:"^[a-zA-Z][a-zA-Z ]+",
+    ifsccode:"^[A-Z]{4}0[A-Z0-9]{6}$",
 }
 
 export const VALIDATION_MESSAGES={
@@ -118,6 +122,20 @@ export const VALIDATION_MESSAGES={
         NOT_VALID:"Enter Valid PAN card number",   
         EMPTY:"*PAN card number Required",
     },
+    BANK_DETAILS:{
+        ACCOUNT_HOLDER:{
+            NOT_VALID:"Enter Valid Account Holder",   
+            EMPTY:"*Account Holder Required",
+        },
+        ACCOUNT_Number:{
+            NOT_VALID:"Enter Valid Account Number",   
+            EMPTY:"*Account Number Required",
+        },
+        IFSC_CODE:{
+            NOT_VALID:"Enter Valid IFSC code",   
+            EMPTY:"*IFSC code Required",
+        }
+    }
 }
 
 
@@ -128,4 +146,19 @@ export const LOCALSTORAGE_KEY_NAME="token"
 export const BUTTONTEXT={
     PUBLISH_RIDE:"Publish Ride",
     CONTINUE:"Continue"
+}
+
+export const MONTHS={
+    1:"Jan",
+    2:"Feb",
+    3:"Mar",
+    4:"Apr",
+    5:"May",
+    6:"Jun",
+    7:"Jul",
+    8:"Aug",
+    9:"Sep",
+    10:"Oct",
+    11:"Nov",
+    12:"Dec"
 }

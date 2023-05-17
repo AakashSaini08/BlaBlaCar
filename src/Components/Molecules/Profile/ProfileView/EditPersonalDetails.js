@@ -9,7 +9,7 @@ import DateInput from "../../../Atoms/DateInput";
 import { useDispatch, useSelector } from "react-redux";
 import { gettingProfilePic, updateProfile } from "../../../../Redux/Actions";
 import ValidationText from "../../../Atoms/ValidationText";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 export default function EditPersonalDetails({ show, setShow = () => {} }) {
 //   const userData = JSON.parse(localStorage.getItem("CurrentUser"));
   const StoreData = useSelector((state) => state.profilePicReducer);
@@ -37,10 +37,17 @@ export default function EditPersonalDetails({ show, setShow = () => {} }) {
     dispatch(gettingProfilePic());
     // dispatch(getVehicleData({}))
   }, [dispatch]);
+  useEffect(() => {
+    setDob(new Date(StoreData?.birth || "0"))
+    setFirstName(StoreData?.userdeatils?.first_name)
+    setLastName(StoreData?.userdeatils?.last_name)
+    SetGender(myGender)
+    setEmail(StoreData?.userdeatils?.email)
+  }, [StoreData,myGender]);
 
 //   console.log(StoreData.birth, "personal detail data");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 //   console.log(!dob?.toLocaleDateString(), "vvshfd");
   const handleSubmit = () => {
     if (!email.trim()) {
