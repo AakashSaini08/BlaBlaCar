@@ -30,7 +30,7 @@ export default function AddVehicleDetails() {
   const dispatch=useDispatch()
   const navigate=useNavigate()
 const navigateToProfile=(res)=>{
-  navigate("/dashboard/profile/menu")
+  navigate("/profile")
 }
 
   const handleSubmit = () => {

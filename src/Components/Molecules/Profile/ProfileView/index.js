@@ -6,7 +6,8 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   //   getVehicleData,
-  gettingProfilePic, getVehicleData,
+  gettingProfilePic,
+  getVehicleData,
   //   addingBio,
 } from "../../../../Redux/Actions";
 import { BASE_URL } from "../../../../Services/Api/Constants";
@@ -20,20 +21,30 @@ export default function NameAndProfilePicView({
   const userData = JSON.parse(localStorage.getItem("CurrentUser"));
   const email = JSON.parse(localStorage.getItem("email"));
   const StoreData = useSelector((state) => state);
-  const emailStatus = useSelector((state) => state?.profilePicReducer?.details?.is_verified);
+  const emailStatus = useSelector(
+    (state) => state?.profilePicReducer?.details?.is_verified
+  );
   const add_bio = useSelector((state) => state?.profilePicReducer?.add_bio);
-  const phone = useSelector((state)=>state?.profilePicReducer?.phonedetails?.phone_no);
-  const phoneStatus = useSelector((state)=>state?.profilePicReducer?.phonedetails?.is_verified);
-  const pancard = useSelector((state)=>state?.profilePicReducer?.pancarddeatils?.pancard_no);
-  const pancardStatus = useSelector((state)=>state?.profilePicReducer?.pancarddeatils?.is_verified);
+  const phone = useSelector(
+    (state) => state?.profilePicReducer?.phonedetails?.phone_no
+  );
+  const phoneStatus = useSelector(
+    (state) => state?.profilePicReducer?.phonedetails?.is_verified
+  );
+  const pancard = useSelector(
+    (state) => state?.profilePicReducer?.pancarddeatils?.pancard_no
+  );
+  const pancardStatus = useSelector(
+    (state) => state?.profilePicReducer?.pancarddeatils?.is_verified
+  );
 
   // console.log(pancard,pancardStatus,"{{{{{{}}}}}")
-  const vehicleData = useSelector((state)=>state?.vehicleDataReducer?.data)
-  console.log(vehicleData,"<<<<<<<<<<>>>>>>>>>>")
+  const vehicleData = useSelector((state) => state?.vehicleDataReducer?.data);
+  console.log(vehicleData, "<<<<<<<<<<>>>>>>>>>>");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(gettingProfilePic());
-    dispatch(getVehicleData({}))
+    dispatch(getVehicleData({}));
   }, [dispatch]);
 
   const handleSelect = () => {};
@@ -54,21 +65,23 @@ export default function NameAndProfilePicView({
       </div>
       <div className="profileMain">
         <h1 className="headingData">Verify Your Profile</h1>
-        {!pancardStatus ? 
-        <Linkto linkText="Verify your Govt. ID" route="/govtid"/>
-        :<p className="confirm">Pancard : {pancard}</p>
-        }
+        {!pancardStatus ? (
+          <Linkto linkText="Verify your Govt. ID" route="/govtid" />
+        ) : (
+          <p className="confirm">Pancard : {pancard}</p>
+        )}
         {emailStatus === "False" ? (
           <Link className="personal-detail-link " to="/emailVerification">
             Confirm email {email}
           </Link>
         ) : (
-          <p className="confirm" > Email : {email}</p>
+          <p className="confirm"> Email : {email}</p>
         )}
-        {!phoneStatus?
-        <Linkto linkText="Confirm Phone number" route="/phonenumber"/>
-        :<p className="confirm">Phone no : {phone}</p>}
-        
+        {!phoneStatus ? (
+          <Linkto linkText="Confirm Phone number" route="/phonenumber" />
+        ) : (
+          <p className="confirm">Phone no : {phone}</p>
+        )}
       </div>
       <div className="profileMain">
         <h1 className="headingData">About You</h1>
@@ -79,13 +92,12 @@ export default function NameAndProfilePicView({
       <div className="profileMain">
         <h1 className="headingData">Vehicles</h1>
 
-        {(vehicleData)?.map((val) => (
-
+        {vehicleData?.map((val) => (
           <div>
-          {console.log(val,"((((((((((())))))))))0")}
+            {console.log(val, "((((((((((())))))))))0")}
             <CustomLinkListCreator
               linkText={`VehicleName : ${val?.vehicle_name}  
-                                    VehicleColor :${val?.vehicle_color}`}
+                        VehicleColor :${val?.vehicle_color}`}
               route={`/vehicle/${val?.id}`}
             />
           </div>
