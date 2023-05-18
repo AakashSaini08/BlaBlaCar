@@ -8,6 +8,8 @@ import cross from "../../assets/cross.svg"
 import calender from "../../assets/calender.svg"
 import userProfileIcon from "../../assets/userProfileIcon.svg"
 import additionIcon from "../../assets/addition.svg"
+import substracton from "../../assets/substraction.svg"
+
 import closeEye from "../../assets/closeEye.png"
 import openEye from "../../assets/openEye.png"
 import scamAlert from "../../assets/scamDetective-653544b71d88f51797db..svg"
@@ -32,6 +34,7 @@ export  const Images={
     scamAlert,
     driver,
     bio,
-    verified
+    verified,
+    substracton
 }
 

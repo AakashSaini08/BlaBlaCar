@@ -1,0 +1,17 @@
+.RideTimePicker{
+    width:100%
+}
+.RideTimePicker .react-datepicker--time-only{
+    width:200%;
+    display:flex;
+    align-items: center;
+    margin-left:680%;
+
+}
+.react-datepicker__time-container {
+    width:100%;
+  
+}
+.RideTimePicker .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
+  width:100%
+}

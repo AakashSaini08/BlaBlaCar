@@ -1,4 +1,4 @@
-export const BASE_URL="https://bfd2-112-196-113-2.ngrok-free.app/"
+export const BASE_URL="https://e6ec-112-196-113-2.ngrok-free.app/"
 export const URL_EXTENSIONS={
     SIGN_UP:"signup/",
     SIGN_IN:"login/",
@@ -16,5 +16,8 @@ export const URL_EXTENSIONS={
     PHONE_NUMBER:"phoneno/",
     CONFIRM_PHONE:"confirmphone/",
     PANCARD:"pancard/",
-    BANK_DETAILS:"bankdetails/"
+    BANK_DETAILS:"bankdetails/",
+    PUBLISH_RIDE:"createride/"
 }
+
+export const MAP_API_KEY="AIzaSyDUzn63K64-sXadyIwRJExCfMaicagwGq4"

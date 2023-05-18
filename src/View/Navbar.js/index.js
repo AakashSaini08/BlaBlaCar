@@ -34,7 +34,7 @@ export default function Navbar() {
                         <img src={Images.blablacarLogo} alt="BlaBlaCar" onClick={() => { navigate("/") }}></img>
                     </span>
                 </div>
-                    {(!currentPath?.pathname?.includes("register")||token) && <Linkto linkText={"Publish a ride"}/>}
+                    {(!currentPath?.pathname?.includes("register")||token) && <Linkto linkText={"Publish a ride"} route={"/offer-seats"}/>}
                     <h4>{CurrentUser?.replace(/^["'](.+(?=["']$))["']$/, '$1')}</h4>
                     {(!currentPath?.pathname?.includes("register")||token) && <NavContent handleDropDownIconPosition={handleDropDownIconPosition} dropDownIconPosition={dropDownIconPosition} />}
                     {dropDownListShow && <DropDownListViewer dropDownListData={!token ? dropDownListDataForGuest : dropDownListDataForUser} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}

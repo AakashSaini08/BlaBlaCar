@@ -24,7 +24,15 @@ export const STRINGS={
     CHANGE_PASSWORD:"Change password",
     OTP_SMS:"Enter the code we've just sent you by SMS",
     PANCARD_DETAILS:"Enter your PAN Card number",
-    BANK_DETAILS:"Your bank account details"
+    BANK_DETAILS:"Your bank account details",
+    ABOUT_RIDE: "Anything to add about your ride?",
+    NUMBER_OF_PASSENGERS: "So how many BlaBlaCar passengers can you take?",
+    SEAT_COMFORT: "Think comfort, keep the middle seat empty!",
+    BOOK_INSTANT: "Can passengers book instantly?",
+    SET_PRICE: "Set your price per seat",
+    CANCLE_RIDE: "You're about to cancel your ride. It will be deleted and passengers won't be able to travel with you.",
+    RIDES: "Your Rides",
+    RIDE_PLAN: "Ride Plan"
 }
 
 

@@ -1,0 +1,15 @@
+.additionIcon{
+    height:40px;
+    width:40px;
+    margin:25px
+}
+.Counter{
+
+display: flex;
+
+gap:33.3%
+}
+.counterText{
+    font-size: 70px;
+    color:hsla(189, 89%, 17%, 1)
+}

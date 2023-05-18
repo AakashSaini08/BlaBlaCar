@@ -1,0 +1,49 @@
+.routeDistance {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%
+}
+
+.TollRoutes:hover {
+  background-color: rgb(0, 175, 245);
+  color: white;
+  width: 80%;
+  font-weight: bolder;
+  margin-left: 10%;
+  border-radius: 10px;
+  font-size: larger;
+  text-align: left;
+  margin: 10px;
+}
+
+.TollRoutes {
+  margin: 10px;
+  text-align: left;
+  font-weight: bolder;
+
+}
+
+.NoTollRoutes:hover {
+  background-color: grey;
+  color: white;
+  width: 80%;
+  font-weight: bolder;
+  margin-left: 10%;
+  border-radius: 10px;
+  font-size: larger;
+  text-align: left;
+  margin: 10px;
+}
+
+.NoTollRoutes {
+  margin: 10px;
+  text-align: left;
+  font-weight: bolder;
+
+}
