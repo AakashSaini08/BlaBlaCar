@@ -5,17 +5,24 @@ import CustomInput from '../../../../../Atoms/CustomInput'
 import ContinueButton from '../../../../../Atoms/ContinueButton'
 import ValidationText from '../../../../../Atoms/ValidationText'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { useNavigate } from 'react-router-dom'
-import ModalComponent from '../../../../../Cells/Modal'
+import { useNavigate, useParams } from 'react-router-dom'
+
 import { updateVehicleData } from '../../../../../../Redux/Actions'
 
 
-export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
+export default function UpdateVehicles() {
+  const { id } = useParams();
+
+  const vehicleData = useSelector((state) => state?.vehicleDataReducer?.data);
+  console.log(vehicleData,"ssssssss")
+
+  const vehicle = vehicleData.find((val)=>val.id == id)
+  console.log(vehicle,"aaaaaaaaaaaaa")
   const [country, setCountry] = useState(vehicle?.country)
   const [countryValidationMessage, setCountryValidationMessage] = useState()
-  const [vehicleNumber, setVehicleNumber] = useState(vehicle?.vehicle_number)
+  const [vehicleNumber, setVehicleNumber] = useState(vehicle?.vehicle_no)
   const [vehicleNumberValidationMessage, setVehicleNumberValidationMessage] = useState()
   const [vehicleBrand, setVehicleBrand] = useState(vehicle?.vehicle_brand)
   const [vehicleBrandValidationMessage, setVehicleBrandValidationMessage] = useState()
@@ -30,8 +37,9 @@ export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
   const dispatch=useDispatch()
 
   const navigate=useNavigate()
+  
   const  navigateToProfile=(res)=>{
-    navigate("/dashboard/profile/menu")
+    navigate("/profile")
     
   }
 
@@ -60,14 +68,12 @@ export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
    }
   else{
 
-    dispatch(updateVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear},id,navigateToProfile))
+    dispatch(updateVehicleData({country:country,vehicle_no:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear , id:id},navigateToProfile))
   
   }
 }
   return (
     <div>
-
-<ModalComponent show={show} setShow={setShow}>
       <Header heading={STRINGS?.ADDING_VEHICLE_DETAILS} />
       <div className='section-content'>
         <CustomInput placeHolder='country' state={country} setState={setCountry} validationMessage={countryValidationMessage} setValidationMessage={setCountryValidationMessage} />
@@ -86,7 +92,6 @@ export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
         <ValidationText message={vehicleModelYearValidationMessage} />
       </div>
       <ContinueButton ButtonText="Update" handleSubmit={handleSubmit} />
-      </ModalComponent>
     </div>
   )
 }

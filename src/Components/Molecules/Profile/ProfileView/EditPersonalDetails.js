@@ -49,6 +49,8 @@ export default function EditPersonalDetails({ show, setShow = () => {} }) {
 
   // const navigate = useNavigate();
 //   console.log(!dob?.toLocaleDateString(), "vvshfd");
+
+
   const handleSubmit = () => {
     if (!email.trim()) {
       setEmailValidationMessage(VALIDATION_MESSAGES?.EMAIL?.EMPTY);

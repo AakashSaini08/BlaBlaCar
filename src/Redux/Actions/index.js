@@ -193,11 +193,10 @@ export const deleteVehicle = (id, navigateToProfile) => {
     navigateToProfile,
   };
 };
-export const updateVehicleData = (payload, id, navigateToProfile) => {
+export const updateVehicleData = (payload, navigateToProfile) => {
   return {
     type: ACTION_STATES.UPDATE_VEHICLE,
     payload,
-    id,
     navigateToProfile,
   };
 };

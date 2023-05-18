@@ -3,6 +3,9 @@ import Profile from "../Components/Molecules/Profile";
 import BankDetails from "../Components/Molecules/Profile/AccountView/BankDetails";
 import AddingMiniBio from "../Components/Molecules/Profile/ProfileView/AddingMiniBio";
 import AddVehicleDetails from "../Components/Molecules/Profile/ProfileView/AddVehicle";
+import EditOrDeleteVehicle from "../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle";
+import DeleteVehicle from "../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle/DeleteVehicle";
+import UpdateVehicles from "../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle/UpdateVehicle";
 import DetailsOfCurrentUsers from "../Components/Molecules/Profile/ProfileView/DetailsOfCurrentUsers";
 import EditPersonalDetails from "../Components/Molecules/Profile/ProfileView/EditPersonalDetails";
 import EmailVerificationLinkModal from "../Components/Molecules/Profile/ProfileView/EmailVerificationLinkModal";
@@ -66,6 +69,18 @@ export const PRIVATE_ROUTES = [
   {
     path: "/currentUser",
     component:<DetailsOfCurrentUsers/>,    
+  },
+  {
+    path: "/vehicle/:id",
+    component: <EditOrDeleteVehicle />,
+  },
+  {
+    path: "/deleteVehicle/:id",
+    component: <DeleteVehicle />,
+  },
+  {
+    path: "/updateVehicle/:id",
+    component: <UpdateVehicles />,
   },
 ];
 

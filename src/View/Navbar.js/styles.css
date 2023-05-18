@@ -14,7 +14,7 @@
 .header-content{
     width: 100%;
     display: flex;
-    margin-top: 4px;
+    margin-top: 5px;
     font-weight: 500;
 }
 .headerData{
@@ -116,4 +116,5 @@
 }
 h4{
     color: #054752;
+    font-size: 18px;
 }

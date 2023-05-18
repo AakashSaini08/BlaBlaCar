@@ -35,9 +35,12 @@ function* postRegisterData(payload) {
         "CurrentUser",
         JSON.stringify(res?.data?.data?.first_name)
       );
+    localStorage.setItem("email", JSON.stringify(res?.data?.data?.email));
+
     }
     yield put(payload?.successRegister());
     yield put(settingLoaderState(false));
+
   } catch (error) {
     yield put(settingLoaderState(false));
     yield put(
@@ -179,8 +182,7 @@ function* updateProfileData(payload) {
       BASE_URL + URL_EXTENSIONS.USER_PROFILE,
       formData
     );
-    console.log(res?.data?.status?.data, "profileUpdated");
-    // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+    localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.data?.userdeatils?.first_name));
     yield put(settingLoaderState(false));
   } catch (error) {
     yield put(settingLoaderState(false));
@@ -284,14 +286,10 @@ function* getVehicle() {
 
 function* deleteVehicleData(payload) {
   try {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: token },
-    };
+    console.log(payload.id,"deleteVehicleData")
     yield put(settingLoaderState(true));
-    const res = yield axios.delete(
-      BASE_URL + URL_EXTENSIONS.VEHICLE + `/${payload?.id}`,
-      config
+    const res = yield axiosInstance.delete(
+      BASE_URL + URL_EXTENSIONS.VEHICLE + `${payload?.id}/`
     );
     payload.navigateToProfile(res);
     yield put(settingLoaderState(false));
@@ -302,16 +300,19 @@ function* deleteVehicleData(payload) {
 }
 
 function* updateVehicleDetails(payload) {
+  const formData = new FormData();
+  formData.append("id", payload.payload.id);
+    formData.append("country", payload.payload.country);
+    formData.append("vehicle_no", payload.payload.vehicle_no);
+    formData.append("vehicle_brand", payload.payload.vehicle_brand);
+    formData.append("vehicle_name", payload.payload.vehicle_name);
+    formData.append("vehicle_type", payload.payload.vehicle_type);
+    formData.append("vehicle_color", payload.payload.vehicle_color);
+    formData.append("vehicle_model_year", payload.payload.vehicle_model_year);
   try {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: token },
-    };
     yield put(settingLoaderState(true));
-    const res = yield axios.put(
-      BASE_URL + URL_EXTENSIONS.VEHICLE + `/${payload?.id}`,
-      { vehicle: payload?.payload },
-      config
+    const res = yield axiosInstance.patch(
+      BASE_URL + URL_EXTENSIONS.VEHICLE ,formData
     );
     payload.navigateToProfile(res);
     yield put(settingLoaderState(false));

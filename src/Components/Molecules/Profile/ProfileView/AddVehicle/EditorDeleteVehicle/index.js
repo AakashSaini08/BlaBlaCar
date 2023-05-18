@@ -1,37 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { getVehicleData } from '../../../../../../Redux/Actions'
-import Header from '../../../../../Atoms/Header'
-import PathTo from '../../../../../Atoms/PathTo'
-import DeleteVehicle from './DeleteVehicle'
-import UpdateVehicles from './UpdateVehicle'
-import Linkto from '../../../../../Atoms/LinkTo'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { getVehicleData } from "../../../../../../Redux/Actions";
 
 export default function EditOrDeleteVehicle() {
-  const [showUpdate,setShowUpdate]=useState(false)
-  const [showDeleteVehicle,setShowDeleteVehicle]=useState(false)
-    const dispatch=useDispatch()
-    useEffect(()=>{
-        dispatch(getVehicleData({}))
-              
-    },[])
-    const {id}=useParams()
-    const vehicleData=useSelector(state=>state?.vehicleDataReducer)
-    const vehicle=(Object.values(vehicleData).length&&Object.values(vehicleData)?.find(val=>val?.id==id))
-  return (
-    <div className='section-content'>
-      <Header heading={`Name:${vehicle?.vehicle_name}`}/>
-      <div className='FillingMessageDiv'>
-                <span className='FillingMessage'>color :{vehicle?.vehicle_color}</span>
-            </div>
-            <div>
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getVehicleData({}));
+  }, [dispatch]);
+  const { id } = useParams();
+  const vehicleData = useSelector((state) => state?.vehicleDataReducer?.data);
+  // console.log(vehicleData, ">>>><<<<<<");
+  const vehicle =
+    Object.values(vehicleData).length &&
+    Object.values(vehicleData)?.find((val) => val?.id == id);
 
-            <PathTo  picNeeded={false}  linkText="Edit info" setShow={setShowUpdate}/>
-            </div>
-            <PathTo  picNeeded={false}  linkText="Delete vehicle" setShow={setShowDeleteVehicle}/>
-             <DeleteVehicle show={showDeleteVehicle} setShow={setShowDeleteVehicle} id={id}/>
-             <UpdateVehicles show={showUpdate} setShow={setShowUpdate} id={id} vehicle={vehicle}/>
+  console.log(vehicle, "{{{{{{}}}}}");
+  return (
+    <div className="section-content">
+      <h2 className="vehicle-heading">{vehicle?.vehicle_name}</h2>
+      <div className="FillingMessageDiv">
+        <span className="FillingMessage">
+          Color :{vehicle?.vehicle_color.toUpperCase()}
+        </span>
+      </div>
+      <div className="vehicle-link-div">
+        <Link className="delete-vehicle-link" to={`/updateVehicle/${id}`}>
+          Edit info
+        </Link>
+      </div>
+      <div className="vehicle-link-div">
+        <Link className="delete-vehicle-link" to={`/deleteVehicle/${id}`}>
+          Delete vehicle
+        </Link>
+      </div>
     </div>
-  )
+  );
 }
+// `/vehicle/${val?.id}`

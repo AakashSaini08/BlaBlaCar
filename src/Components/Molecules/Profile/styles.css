@@ -106,15 +106,27 @@
 .FillingMessageDiv {
     display: flex;
     flex-direction: column;
-    padding: 16px 24px;
+    padding: 15px 22px;
     word-break: break-word;
     width: 75%;
     text-align: left;
 }
-
+.vehicle-heading{
+    text-align: left;
+    padding-left: 20px;
+}
 .FillingMessage {
     font: 400 16px / 20px gt-eesti, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgb(40, 91, 100);
+    font-size: 20px;
+}
+
+.vehicle-link-div{
+padding-left: 15px;
+font-size: 20px;
+text-align: left;
+margin-top: 20px;
+
 }
 
 .formInputs {
@@ -124,6 +136,16 @@
     justify-content: center;
     margin-left: 10%;
 
+}
+
+.delete-vehicle-link{
+    text-decoration: none;
+    color: #00AFF5;
+    padding: 12px ;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -5px;
+    text-align: left;
 }
 
 .miniBioInput {

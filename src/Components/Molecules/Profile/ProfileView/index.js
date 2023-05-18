@@ -11,7 +11,7 @@ import {
   //   addingBio,
 } from "../../../../Redux/Actions";
 import { BASE_URL } from "../../../../Services/Api/Constants";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { Images } from "../../../../Shared/Images";
 
 export default function NameAndProfilePicView() {
