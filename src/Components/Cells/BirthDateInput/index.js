@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 export default function BirthDateInput() {
   const dispatch=useDispatch()
   const [startDate, setStartDate] = useState();
+  const status = 1;
   const navigate = useNavigate()
   const handleSubmit = () => {
     dispatch(registerData?.date(startDate.toISOString().slice(0, 10)))
@@ -19,7 +20,7 @@ export default function BirthDateInput() {
     <>
       <Header heading={STRINGS?.BIRTHDATE_HEADING} />
       <div className='section'>
-        <DateInput startDate={startDate}  setStartDate={setStartDate}/>
+        <DateInput startDate={startDate}  setStartDate={setStartDate} status={status}/>
       </div>
       <ContinueButton handleSubmit={handleSubmit} />
     </>

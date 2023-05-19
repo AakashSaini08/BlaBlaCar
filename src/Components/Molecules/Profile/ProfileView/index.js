@@ -97,8 +97,8 @@ export default function NameAndProfilePicView() {
           <div key={i}>
             {/* {console.log(val, "((((((((((())))))))))0")} */}
             <CustomLinkListCreator
-              linkText={`VehicleName : ${val?.vehicle_name}  
-                        VehicleColor :${val?.vehicle_color}`}
+              linkText={` ${val?.vehicle_name}  
+                        ${val?.vehicle_color}`}
               route={`/vehicle/${val?.id}`}
             />
           </div>

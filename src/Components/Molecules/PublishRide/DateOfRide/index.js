@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { addRideDate } from "../../../../Redux/Actions/PublishRideAction";
 
 export default function DateOfRide() {
-  const [dateOfRide, setDateOfRide] = useState(new Date());
+  const [dateOfRide, setDateOfRide] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [validationMessage, setValidationMessage] = useState();
@@ -31,8 +31,8 @@ export default function DateOfRide() {
         <DateInput
           startDate={dateOfRide}
           setStartDate={setDateOfRide}
-          validationMessage={validationMessage}
-          minDate={new Date()}
+          // validationMessage={validationMessage}
+          // minDate={new Date()}
         />
         <label>{validationMessage}</label>
         <ContinueButton

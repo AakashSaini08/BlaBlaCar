@@ -16,6 +16,9 @@ const handleSubmit=()=>{
    dispatch(setPriceOfRide(price))
    navigate("/offer-seats/comment")
 }
+// const initialStateForPublishRide =useSelector((state)=>state?.publishRideReducer);
+// console.log(initialStateForPublishRide,"assa")
+
   return (
     <div>
         <Header heading={STRINGS?.SET_PRICE}/>

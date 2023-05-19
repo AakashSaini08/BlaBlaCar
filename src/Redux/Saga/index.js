@@ -475,17 +475,33 @@ function* deleteMyAccount(payload) {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 function* publishRideData(payload) {
+  console.log(payload.payload,"{{{{{{{{}}}}}}}")
+  const formData = new FormData();
+  // console.log(payload.payload, "saga bank");
+  formData.append("pickupadd", payload?.payload?.scource);
+  formData.append("dropadd", payload?.payload?.destination);
+  formData.append("date_of_journey", payload?.payload?.date);
+  formData.append("about_ride", payload?.payload?.about_ride);
+  formData.append("book_instantly", payload?.payload?.book_instantly);
+  formData.append("des_lat", payload?.payload?.destination_latitude);
+  formData.append("des_log", payload?.payload?.destination_longitude);
+  formData.append("mid_seat", payload?.payload?.mid_seat);
+  formData.append("no_of_seat", payload?.payload?.passengers_count);
+  formData.append("fare", payload?.payload?.set_price);
+  formData.append("source_lat", payload?.payload?.source_latitude);
+  formData.append("source_log", payload?.payload?.source_longitude);
+  formData.append("pickuptime", payload?.payload?.time);
+  formData.append("expectedtime", payload?.payload?.select_route?.duration);
+  formData.append("distance", payload?.payload?.select_route?.distance);
+  formData.append("vehical_id", payload?.payload?.vehicle_id);
+
+
   try {
-    console.log("publishride");
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: token },
-    };
+
     yield put(settingLoaderState(true));
-    const res = yield axios.post(
+    const res = yield axiosInstance.post(
       BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE,
-      payload?.payload,
-      config
+      formData
     );
     console.log(res?.data, "publishRide");
     payload?.successPublishRide();

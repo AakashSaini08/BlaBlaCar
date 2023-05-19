@@ -25,6 +25,7 @@ export default function AboutRide() {
         about_ride:aboutRide,
         book_instantly:data?.bookRequesttype,
         mid_seat:data?.needMiddleSeatEmpty,
+        vehicle_id:data?.vehicle_id,
         select_route:{
             distance:data?.selectedRouteData?.distance,
             duration:data?.selectedRouteData?.duration,
@@ -32,7 +33,7 @@ export default function AboutRide() {
             route_deatils:data?.selectedRouteData?.directions,
         }
     }
-    console.log(data)
+    // console.log(data)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const successPublishRide=()=>{
@@ -54,7 +55,6 @@ export default function AboutRide() {
   return (
     <div>
         <Header heading={STRINGS?.ABOUT_RIDE}/>
-        
         <textarea className='aboutRide' value={aboutRide} onChange={(e)=>setAboutRide(e.target.value)}/>
         <ValidationText message={validationMessage}/>
         <ContinueButton ButtonText={BUTTONTEXT?.PUBLISH_RIDE} handleSubmit={handleSubmit}/>

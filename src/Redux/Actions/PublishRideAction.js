@@ -40,13 +40,12 @@ export const setPickLocation = (payload) => {
      
     }
   }
-  export const needMiddleSeatEmpty = (payload) => {
-  
-    console.log("called")
+  export const needMiddleSeatEmpty = (payload,id) => {
+  console.log(payload,id,"<<<<<<<>>>>>>")
     return {
       type: ACTION_STATES.NEED_MIDDLE_SEAT_EMPTY,
-      payload
-     
+      payload,
+      id
     }
   }
   export const numberOfPassangers = (payload) => {
@@ -74,8 +73,9 @@ export const setPickLocation = (payload) => {
    
     return {
       type: ACTION_STATES.PUBLISH_RIDE,
-      payload
-      ,successPublishRide,failedPublishRide
+      payload,
+      successPublishRide,
+      failedPublishRide
     }
   }
   // export const publishRide = (payload,successPublishRide,failedPublishRide) => {

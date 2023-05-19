@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import "./styles.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -16,24 +16,39 @@ const DateInput = ({
   startDate,
   setStartDate = () => {},
   minDate,
+  status,
   setValidationMessageDOB = () => {},
 }) => {
   return (
     <div className="section-data">
       <div className={!validationMessage ? `inputDiv` : `inputDivInvalid`}>
         <div className="singup-date-picker-wrapper">
+        {status === 1 ?
           <DatePicker
             showIcon
-            placeholderText="Set your DOB"
+            placeholderText="Setect Date"
             className="singup-date-picker"
             selected={startDate}
             onChange={(date) => {
               setStartDate(date);
               setValidationMessageDOB("");
             }}
+
             maxDate={getLegalDate()}
-            //  maxDate={!minDate?new Date():new Date().setMonth(new Date().getMonth() + 2)}
+          /> :
+          <DatePicker
+            showIcon
+            placeholderText="Setect Date"
+            className="singup-date-picker"
+            selected={startDate}
+            onChange={(date) => {
+              setStartDate(date);
+              setValidationMessageDOB("");
+            }}
+            minDate={new Date()}
           />
+           }
+          
         </div>
         <br />
       </div>

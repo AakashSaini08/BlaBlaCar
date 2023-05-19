@@ -28,6 +28,7 @@ export const STRINGS={
     ABOUT_RIDE: "Anything to add about your ride?",
     NUMBER_OF_PASSENGERS: "So how many BlaBlaCar passengers can you take?",
     SEAT_COMFORT: "Think comfort, keep the middle seat empty!",
+    SELECT_CAR:"Which car will you take?",
     BOOK_INSTANT: "Can passengers book instantly?",
     SET_PRICE: "Set your price per seat",
     CANCLE_RIDE: "You're about to cancel your ride. It will be deleted and passengers won't be able to travel with you.",

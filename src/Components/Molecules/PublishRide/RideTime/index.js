@@ -23,7 +23,7 @@ export default function RideTime() {
     } else {
       console.log(selectedDateTime.toLocaleTimeString());
       dispatch(addRideTime(selectedDateTime.toLocaleTimeString()));
-      navigate("/offer-seats/comfort");
+      navigate("/offer-seats/car");
     }
   };
   return (

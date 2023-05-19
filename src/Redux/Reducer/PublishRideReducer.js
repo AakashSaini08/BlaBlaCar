@@ -9,7 +9,8 @@ const initialStateForPublishRide = {
     needMiddleSeatEmpty: false,
     noOfPassangers: 0,
     bookRequesttype:"",
-    price:""
+    price:"",
+    vehicle_id:0,
 }
 export const publishRideReducer = (state = initialStateForPublishRide, action) => {
     switch (action?.type) {
@@ -34,8 +35,10 @@ export const publishRideReducer = (state = initialStateForPublishRide, action) =
                 ...state, rideStartTime: action?.payload
             }
         case ACTION_STATES.NEED_MIDDLE_SEAT_EMPTY:
+        console.log(action,"NEED_MIDDLE_SEAT_EMPTY")
             return {
-                ...state, needMiddleSeatEmpty: action?.payload
+                ...state, needMiddleSeatEmpty: action?.payload,
+                vehicle_id:action?.id
             }
         case ACTION_STATES.NUMBER_OF_PASSENGERS:
             return {

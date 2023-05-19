@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CustomChoiceSelector from '../../../Cells/CustomChoiceSelector'
 import { useDispatch } from 'react-redux'
-import { bookRequestType, needMiddleSeatEmpty } from '../../../../Redux/Actions/PublishRideAction'
+import { bookRequestType } from '../../../../Redux/Actions/PublishRideAction'
 import { STRINGS } from '../../../../Shared/Constants'
 
 export default function PassangersCanBookInstantly() {

@@ -16,6 +16,8 @@ import scamAlert from "../../assets/scamDetective-653544b71d88f51797db..svg"
 import driver from "../../assets/driver.svg"
 import bio from "../../assets/bio.svg"
 import verified from "../../assets/verified.svg"
+import successImg from "../../assets/successImg.svg"
+
 
 
 export  const Images={
@@ -35,6 +37,7 @@ export  const Images={
     driver,
     bio,
     verified,
-    substracton
+    substracton,
+    successImg
 }
 

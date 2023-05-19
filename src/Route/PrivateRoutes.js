@@ -11,6 +11,7 @@ import DetailsOfCurrentUsers from "../Components/Molecules/Profile/ProfileView/D
 import EditPersonalDetails from "../Components/Molecules/Profile/ProfileView/EditPersonalDetails";
 import EmailVerificationLinkModal from "../Components/Molecules/Profile/ProfileView/EmailVerificationLinkModal";
 import AboutRide from "../Components/Molecules/PublishRide/AboutRide";
+import Car from "../Components/Molecules/PublishRide/Car";
 import DateOfRide from "../Components/Molecules/PublishRide/DateOfRide";
 import DropOf from "../Components/Molecules/PublishRide/DropOf";
 import NoOfPassangers from "../Components/Molecules/PublishRide/NoOfPassangers";
@@ -27,6 +28,8 @@ import GovtId from "../View/GovtId.js";
 import EmailOtp from "../View/OTP";
 import Phone from "../View/Phone";
 import PhoneOtp from "../View/PhoneOtp";
+import PublishRideSuccess from "../View/PublishRideSuccess";
+import Success from "../View/PublishRideSuccess";
 
 
 
@@ -95,6 +98,10 @@ export const PRIVATE_ROUTES = [
     path: "/updateVehicle/:id",
     component: <UpdateVehicles />,
   },
+  {
+    path: "/publishRideSuccess",
+    component: <PublishRideSuccess/>,
+  },
 
   //////////////////////////////////////////////////////////////////
 
@@ -127,7 +134,11 @@ export const PRIVATE_ROUTES = [
     component: <RideTime />,
   },
   {
-    path: "/offer-seats/comfort",
+    path: "/offer-seats/car",
+    component: <Car />,
+  },
+  {
+    path: "/offer-seats/comfort/:id",
     component: <OfferSeatComfortChoice />,
   },
   {

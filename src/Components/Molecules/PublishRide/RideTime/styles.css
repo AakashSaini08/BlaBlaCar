@@ -15,3 +15,15 @@
 .RideTimePicker .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
   width:100%
 }
+
+
+#myDateTimePicker{
+    height: 92px;
+    text-align: center;
+    font-size: 43px;
+    width: 300px;
+    border-radius: 50px;
+    border: 2px solid #EFEFEF;
+    color: hsla(189, 89%, 17%, 1);
+    font-weight: 600;
+}
