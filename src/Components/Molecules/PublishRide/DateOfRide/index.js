@@ -20,7 +20,7 @@ export default function DateOfRide() {
     if (!dateOfRide) {
       setValidationMessage(VALIDATION_MESSAGES.DATE.EMPTY);
     } else {
-      dispatch(addRideDate(dateOfRide.toLocaleDateString()));
+      dispatch(addRideDate(dateOfRide.toLocaleDateString('en-CA')));
       navigate("/offer-seats/departure-date/time");
     }
   };

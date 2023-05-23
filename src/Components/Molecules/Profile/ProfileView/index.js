@@ -52,13 +52,22 @@ export default function NameAndProfilePicView() {
   return (
     <div className="profile">
       <div className="profileMain">
-        <CustomLinkListCreator
+      <div>
+      <div>
+      <CustomLinkListCreator
           pic={true}
           profileViewLink={true}
           linkText={userData?.first_name}
           handleSelect={handleSelect}
           profilePic={picStatus ? BASE_URL + picStatus : Images.profile}
         />
+      </div>
+      <div>
+      <h2 className="user-name">{userData}</h2>
+
+      </div>
+        
+        </div>
         <Linkto linkText="Add profile picture" route="/picture" />
         <Link className="personal-detail-link" to="/editPersonalDetails">
           Edit Personal Details

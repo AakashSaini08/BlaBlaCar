@@ -274,3 +274,24 @@ export const changePassword = (payload, successPsw, failedPsw) => {
             successSend
           };
         };
+
+        export const getPublishRides = (successGet,failedGet,id) => {
+
+          return {
+            type: ACTION_STATES.GET_PUBLISHED_RIDES,
+            successGet,
+            failedGet,
+            id
+           
+          }
+        }
+        export const deleteRide = (successGet,failedGet,id) => {
+        
+          return {
+            type: ACTION_STATES.DELETE_RIDE,
+            successGet,
+            failedGet,
+            id
+           
+          }
+        }

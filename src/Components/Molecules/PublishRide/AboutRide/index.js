@@ -37,7 +37,7 @@ export default function AboutRide() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const successPublishRide=()=>{
-       navigate("/rides")
+       navigate("/publishRideSuccess")
     }
     const failedPublishRide=(res)=>{
        setValidationMessage(res)

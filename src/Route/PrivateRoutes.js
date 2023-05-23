@@ -166,6 +166,11 @@ export const PRIVATE_ROUTES = [
     path: "/rides",
     component: <YourRides/>,
   },
+  {
+    path: "/publishRideSuccess",
+    component: <PublishRideSuccess/>,
+  },
+
   // {
   //   path: "/rides/offer/:id",
   //   component: <RideDetails/>,

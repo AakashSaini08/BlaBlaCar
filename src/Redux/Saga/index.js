@@ -475,10 +475,10 @@ function* deleteMyAccount(payload) {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 function* publishRideData(payload) {
-  console.log(payload.payload,"{{{{{{{{}}}}}}}")
+  // console.log(payload.payload,"{{{{{{{{}}}}}}}")
   const formData = new FormData();
   // console.log(payload.payload, "saga bank");
-  formData.append("pickupadd", payload?.payload?.scource);
+  formData.append("pickupadd", payload?.payload?.source);
   formData.append("dropadd", payload?.payload?.destination);
   formData.append("date_of_journey", payload?.payload?.date);
   formData.append("about_ride", payload?.payload?.about_ride);
@@ -495,9 +495,7 @@ function* publishRideData(payload) {
   formData.append("distance", payload?.payload?.select_route?.distance);
   formData.append("vehical_id", payload?.payload?.vehicle_id);
 
-
   try {
-
     yield put(settingLoaderState(true));
     const res = yield axiosInstance.post(
       BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE,
@@ -514,18 +512,14 @@ function* publishRideData(payload) {
   }
 }
 function* getPublishRidesData(payload) {
+  console.log(payload,"getPublishRidesData")
   try {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: token },
-    };
     yield put(settingLoaderState(true));
     const res = yield !payload?.id &&
-      axios.get(BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE, config);
+      axiosInstance.get(BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE + "?page=" + 1 + "/");
     const res1 = yield payload?.id &&
-      axios.get(
-        BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE + "/" + payload?.id,
-        config
+      axiosInstance.get(
+        BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE + "?page=" + 1 + "/"
       );
 
     payload?.successGet(res?.data || res1?.data);
@@ -559,6 +553,8 @@ function* deleteRide(payload) {
     payload?.failedGet(error?.response?.data);
   }
 }
+
+
 
 function* Saga() {
   yield all([
@@ -594,6 +590,7 @@ function* Saga() {
     takeLatest(ACTION_STATES.PUBLISH_RIDE, publishRideData),
     takeLatest(ACTION_STATES.GET_PUBLISHED_RIDES, getPublishRidesData),
     takeLatest(ACTION_STATES.DELETE_RIDE, deleteRide),
+
   ]);
 }
 export default Saga;

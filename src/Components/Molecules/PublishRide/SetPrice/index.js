@@ -23,7 +23,7 @@ const handleSubmit=()=>{
     <div>
         <Header heading={STRINGS?.SET_PRICE}/>
         <div className='section-content'>
-        <Counter value={price} setValue={setPrice} lowerLimit={distance*2-distance*2*.25} upperLimit={distance*2+distance*2*.25} difference={10} text={"₹"}/>
+        <Counter value={Math.round(price)} setValue={setPrice} lowerLimit={distance*2-distance*2*.25} upperLimit={distance*2+distance*2*.25} difference={10} text={"₹"}/>
         </div>
         <ContinueButton ButtonText={BUTTONTEXT.CONTINUE}  handleSubmit={handleSubmit}/>
     </div>

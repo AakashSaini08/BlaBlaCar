@@ -14,7 +14,7 @@ function PublishRideSuccess() {
           <img className="sucess-img" src={Images.successImg} alt="" />
         </div>
         <div className="success-content-div">
-          <h2>
+          <h2 className="success-content">
             Your ride is online! Passengers can now book and travel with you.
           </h2>
           <button className="ride-btn" onClick={()=>handleClick()}>
